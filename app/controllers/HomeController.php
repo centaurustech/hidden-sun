@@ -19,5 +19,29 @@ class HomeController extends BaseController {
 	{
 		return View::make('index');
 	}
-
+	
+	public function showLogin()
+	{
+		/*$email = Input::get('email');
+		$password = Input::get('password');
+		
+		if (Auth::attempt(array('email' => $email, 'password' => $password))) {
+    		return Redirect::intended('/');
+		} else {
+    		Session::flash('errorMessage', 'Failed to authenticate.');
+    		
+    		return Redirect::back();
+		}
+		*/
+		return View::make('auth.login');
+	}
+	
+	public function showSignupPage()
+	{
+		return View::make('signup');
+	}
+	
+	
+	
+	
 }
