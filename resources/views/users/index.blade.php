@@ -1,0 +1,1 @@
+/vagrant/sites/hidden-sun.dev/resources/views/users/index.blade.php
