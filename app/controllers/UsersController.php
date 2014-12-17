@@ -1,4 +1,4 @@
-<?php namespace ;
+<?php 
 
 use Illuminate\Routing\Controller;
 
@@ -12,7 +12,7 @@ class UsersController extends Controller {
 	 */
 	public function index()
 	{
-		//
+		
 	}
 
 	/**
@@ -23,7 +23,7 @@ class UsersController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		return View::make('users.signup');
 	}
 
 	/**
@@ -34,7 +34,28 @@ class UsersController extends Controller {
 	 */
 	public function store()
 	{
-		//
+		$validator = Validator::make(Input::all(), User::$rules);
+
+		if ($validator->fails()) {
+			return Redirect::back()->withInput()->withErrors($validator);
+		} else {
+			$allInput = Input::all();
+			$newUser = new User();
+
+			if (Input::has('phone_number')){
+				$newUser->phone_number = $allInput['phone_number'];
+			}
+
+			$newUser->first_name = $allInput['first_name'];
+			$newUser->last_name  = $allInput['last_name'];
+			$newUser->city       = $allInput['city'];
+			$newUser->state      = $allInput['state'];
+			$newUser->email      = $allInput['email'];
+			$newUser->password   = $allInput['password'];
+
+			$newUser->save();
+			return Redirect::action('HomeController@showHomepage');
+		}
 	}
 
 	/**
