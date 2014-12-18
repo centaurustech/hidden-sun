@@ -19,11 +19,6 @@ class Project extends \Eloquent {
 
 	protected $table = 'projects';
 
-	public function projects()
-	{
-		return $this->hasMany('Project');
-	}
-
 	public function user()
 	{
     	return $this->belongsTo('User');
