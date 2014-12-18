@@ -3,12 +3,16 @@
     <h3>Film Seedr: San Antonio</h3>
     <ul class="nav navbar-nav">
 
+
     	@if(Auth::check())
-    		<li><a href="#signout">Sign Out</a></li>
+            <li>Hello, {{ Auth::user()->id }}</li>
+    		<li><a href="{{ URL::route('account-sign-out') }}">Sign Out</a></li>
+            <li><a href="{{ URL::route('account-change-password') }}">Change Password</a></li>
     	@else
     		<li><a href="/account/create">Sign Up</a></li>
-    		<li><a href="login">Log In</a></li>
+    		<li><a href="{{ URL::route('account-sign-in') }}">Sign In</a></li>
     	@endif
+        <li><a href="{{ URL::route('home') }}">Home</a></li>
     	<li><a href="projects/create">Create Project</a></li>
     	<li><a href="projects">View Projects</a></li>
     </ul>

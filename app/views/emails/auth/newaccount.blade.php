@@ -7,7 +7,14 @@
 		<h2>New Account</h2>
 
 		<div>
-			Hello, {{ $name }}!
+				Hello, {{ $email }}!
+				<br><br>
+				You created a new account at Film Seedr. 
+				<br>
+				Please activate your account with the following link.
+				<br>
+				{{ $link }}
+				<br>
 		</div>
 	</body>
 </html>
