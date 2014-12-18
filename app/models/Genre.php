@@ -1,6 +1,6 @@
 <?php
 
-class Project extends \Eloquent {
+class Genre extends \Eloquent {
 
 	// Add your validation rules here
 	public static $rules = [
@@ -17,21 +17,19 @@ class Project extends \Eloquent {
 		];
 		// 'title' => 'required'
 
-	protected $table = 'projects';
+	protected $table = 'genres';
 
 	public function user()
 	{
     	return $this->belongsTo('User');
 	}
 
-	public function genres()
+	public function projects()
 	{
-		return $this->belongsToMany('Genre');
+		return $this->belongsToMany('Project');
 	}
 
 	// Don't forget to fill this array
 	protected $fillable = [];
 
 }
-
-  
