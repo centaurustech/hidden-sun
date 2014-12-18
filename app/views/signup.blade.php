@@ -1,7 +1,6 @@
 @extends('layouts.master')
 @section('content')
 
-.
 
 <h1>Sign Up</h1>
 <div class="contianer" id="sign-up">
@@ -18,17 +17,23 @@
         {{ Form::text('city', Input::old('city'), ['placeholder' => 'City']) }} <br>
     </p>
     
-    <p><label for="State">State</label><br>
-        {{ Form::text('State', Input::old('State'), ['placeholder' => 'State']) }} <br>
+    <p><label for="state">State</label><br>
+        {{ Form::text('state', Input::old('state'), ['placeholder' => 'State']) }} <br>
     </p>
     
     <p><label for="email">Email</label><br>
         {{ Form::text('email', Input::old('email'), ['placeholder' => 'johnsmith@example.com', 'class' => 'form-control']) }} <br>
     </p>
     
-        <p><label for="password">Password</label><br>
+    <p><label for="password">Password</label><br>
         {{ Form::text('password', Input::old('password'), ['placeholder' => 'Password']) }} <br>
     </p>
+    
+    <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+    </div>
     
     <button type="submit">Submit</button>
 </div>
