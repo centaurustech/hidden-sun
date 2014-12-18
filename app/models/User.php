@@ -9,6 +9,19 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	use UserTrait, RemindableTrait;
 
+	public static $rules = array(
+		'first_name'	=> 'max:50',
+		'last_name'		=> 'max:50',
+		'city'			=> 'max:50',
+		'state'			=> 'max:25',
+		'email'			=> 'required|max:50|email|unique:users',
+		'password'		=> 'required|min:6|max:100',
+		'password_again'=> 'required|same:password',
+		'phone_number'	=> 'max:25'
+	);
+
+	protected $fillable = array('first_name', 'last_name', 'city', 'state', 'email', 'password', 'password_temp', 'activation_code', 'active', 'phone_number');
+
 	/**
 	 * The database table used by the model.
 	 *

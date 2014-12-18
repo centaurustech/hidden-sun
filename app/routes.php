@@ -11,16 +11,34 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('index');
-});
+Route::get('/', array(
+	'as' => 'home',
+	'uses' => 'HomeController@showHomepage'
+));
 
-Route::get('/', 'HomeController@showHomepage');
 Route::get('projects', 'ProjectsController@index');
 Route::get('projects/create', 'ProjectsController@createProject');
-Route::get('signup', 'HomeController@showSignupPage');
 Route::get('login', 'HomeController@showLogin');
 
 Route::resource('projects', 'ProjectsController');
-Route::resource('users', 'UsersController');
+Route::resource('account', 'AccountController');
+
+
+// Routes for unauthenticated users
+Route::group(array('before' => 'guest'), function(){
+
+	// CSRF protection
+	Route::group(array('before' => 'csrf'), function(){
+		// Create account (POST)
+		Route::post('/account/create', array(	
+				'as' => 'account-create-post',
+				'uses' => 'AccountController@postCreate'
+		));
+	});
+
+	// Create account (GET)
+	Route::get('/account/create', array(
+		'as' => 'account-create',
+		'uses' => 'AccountController@getCreate'
+	));
+});
