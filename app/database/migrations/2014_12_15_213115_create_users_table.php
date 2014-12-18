@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration {
 			$table->string('city', 50);
 			$table->string('state', 25);
 			$table->string('activation_code', 60);
-			$table->integer('active', 1);
+			$table->integer('active');
 			$table->timestamps();
 		});
 	}
