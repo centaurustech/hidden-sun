@@ -1,9 +1,8 @@
 @extends('layouts.master')
 @section('content')
 
-
 <h1>Sign Up</h1>
-<div class="contianer" id="sign-up">
+<div class="container" id="sign-up">
 {{Form::open(['action' => 'HomeController@showSignupPage'])}}
     <p><label for="first_name">First Name</label><br>
         {{ Form::text('first_name', Input::old('first_name'), ['placeholder' => 'John']) }} <br>
@@ -37,9 +36,5 @@
     
     <button type="submit">Submit</button>
 </div>
-
-
-
-
 
 @stop
