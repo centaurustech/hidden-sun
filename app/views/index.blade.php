@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('content')
+
 <div class="col-md-4">
 	<p>Here is some content that is in the narrower column on the left. We'll see what this turns out to look like. There is not official front end at this point in time.</p>
 </div>

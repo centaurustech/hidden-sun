@@ -2,8 +2,6 @@
   <div class="container">
     <h3>Film Seedr: San Antonio</h3>
     <ul class="nav navbar-nav">
-
-
     	@if(Auth::check())
             <li>Hello, {{ Auth::user()->id }}</li>
     		<li><a href="{{ URL::route('account-sign-out') }}">Sign Out</a></li>
@@ -18,3 +16,4 @@
     </ul>
   </div>
 </nav>
+
