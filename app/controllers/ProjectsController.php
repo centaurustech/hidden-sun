@@ -9,9 +9,9 @@ class ProjectsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$projects = Project::all();
-
-		return View::make('projects.index', compact('projects'));
+		$query = DB::table('projects')->orderBy('created_at', 'desc')->paginate(10);
+		$projects = $query;
+		return View::make('projects.index')->with('projects', $projects);
 	}
 
 	/**

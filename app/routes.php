@@ -16,11 +16,15 @@ Route::get('/', array(
 	'uses' => 'HomeController@showHomepage'
 ));
 
-Route::get('projects', 'ProjectsController@index');
-Route::get('projects/create', 'ProjectsController@createProject');
-Route::get('login', 'HomeController@showLogin');
+Route::get('projects/discover', array(
+	'as' => 'projects-discover',
+	'uses' => 'ProjectsController@index'
+));
 
-Route::resource('projects', 'ProjectsController');
+//Route::get('projects/create', 'ProjectsController@createProject');
+//Route::get('login', 'HomeController@showLogin');
+
+//Route::resource('projects', 'ProjectsController');
 
 // if we were doing restful routing...
 //Route::resource('account', 'AccountController');

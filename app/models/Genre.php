@@ -1,6 +1,6 @@
 <?php
 
-class Genre extends \Eloquent {
+class Genre extends BaseModel {
 
 	// Add your validation rules here
 	public static $rules = [

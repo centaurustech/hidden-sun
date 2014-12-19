@@ -12,7 +12,7 @@
     	@endif
         <li><a href="{{ URL::route('home') }}">Home</a></li>
     	<li><a href="projects/create">Create Project</a></li>
-    	<li><a href="projects">View Projects</a></li>
+    	<li><a href="{{ URL::route('projects-discover')  }}">Discover</a></li>
     </ul>
   </div>
 </nav>
