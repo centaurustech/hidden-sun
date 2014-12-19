@@ -21,7 +21,9 @@ Route::get('projects/discover', array(
 	'uses' => 'ProjectsController@index'
 ));
 
-//Route::get('projects/create', 'ProjectsController@createProject');
+
+
+
 //Route::get('login', 'HomeController@showLogin');
 
 //Route::resource('projects', 'ProjectsController');
@@ -49,12 +51,24 @@ Route::group(array('before' => 'auth'), function() {
 		'uses' => 'AccountController@getChangePassword'
 	));
 
+	// Create project (GET)
+	Route::get('projects/create', array(
+		'as' => 'projects-create',
+		'uses' => 'ProjectsController@create'
+	));
+
 	// CSRF Protected group within authenticated users
 	Route::group(array('before' => 'csrf'), function(){
-			// Change password (GET)
+		// Change password (POST)
 		Route::post('account/change-password', array(
 			'as' => 'account-change-password-post',
 			'uses' => 'AccountController@postChangePassword'
+		));
+
+		// Create Project (POST)
+		Route::post('projects/create', array(
+			'as' => 'projects-create-post',
+			'uses' => 'ProjectsController@store'
 		));
 	});
 });

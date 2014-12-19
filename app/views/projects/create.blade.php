@@ -26,7 +26,7 @@
 
 <h1>Create A New Project</h1>
 
-<form class="form-horizontal" role="form" action="{{ URL::route('account-create-post') }}" method="post">
+<form class="form-horizontal" role="form" action="{{ URL::route('projects-create-post') }}" method="post">
     <div class="form-group">    
         <label for="project_title" class="col-sm-2 control-label">Project Name</label>
         <div class="col-sm-10">
