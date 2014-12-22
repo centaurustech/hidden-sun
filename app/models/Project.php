@@ -5,17 +5,16 @@ class Project extends BaseModel {
 	// Add your validation rules here
 	public static $rules = [
 		'project_title'		=> 'required|max:100',
-		'synopsis'			=> 'required|max:1000',
-		'start_date'		=> 'required',
+		'synopsis'			=> 'required|max:2000',
+		'start_date'		=> '',
 		'complete_date'		=> '',
 		'funds_end_date'	=> 'required',
 		'funds_current'		=> 'required',
 		'funds_goal'		=> 'required',
 		'stage'				=> 'required',
 		'video_url'			=> '',
-
+		'user_id'			=> 'required'
 		];
-		// 'title' => 'required'
 
 	protected $table = 'projects';
 

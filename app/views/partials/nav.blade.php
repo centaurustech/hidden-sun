@@ -1,5 +1,5 @@
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="font-family: 'Slackey', cursive; font-size: 18px;">
-  <div class="container-fluid">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="font-family: 'Slackey', cursive; font-size: 18px; z-index: 100;">
+  <div class="container">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1">
             <span class="sr-only">Toggle navigation</span>
@@ -30,7 +30,3 @@
         </ul>
     </div>
 </nav>
-@if (Request::path() == 'projects/discover')
-    @yield('genres-nav')
-@endif
-
