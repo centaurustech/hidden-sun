@@ -8,9 +8,9 @@ class ProjectsController extends \BaseController {
 	 */
 	public function index()
 	{
-		//$projects = DB::table('projects')->orderBy('created_at', 'desc')->paginate(10);
 		$projects = Project::has('genres')->paginate(10);
-		return View::make('projects.index')->with('projects', $projects);
+		$genres = Genre::where('parent_genre', '=', '1')->get();
+		return View::make('projects.index')->with(array('projects' => $projects, 'genres' => $genres));
 	}
 
 	/**
@@ -36,20 +36,24 @@ class ProjectsController extends \BaseController {
 			return Redirect::back()->withInput()->withErrors($validator);
 		} else {
 			$allInput = Input::all();
-			$newProject = new User();
+			$newProject = new Project();
+			$genre = new Genre();
 
-			if (Input::has('phone_number')){
-				$newUser->phone_number = $allInput['phone_number'];
-			}
-
-			$newProject->first_name = $allInput['first_name'];
-			$newProject->last_name  = $allInput['last_name'];
-			$newProject->city       = $allInput['city'];
-			$newProject->state      = $allInput['state'];
-			$newProject->email      = $allInput['email'];
-			$newProjectr->password  = $allInput['password'];
+			$newProject->project_title 	= $allInput['project_title'];
+			$genre->genre 				= $allInput['genre'];
+			$newProject->synopsis  		= $allInput['synopsis'];
+			$newProject->start_date     = $allInput['start_date'];
+			$newProject->complete_date  = $allInput['complete_date'];
+			$newProject->funds_end_date = $allInput['funds_end_date'];
+			$newProject->funds_current  = $allInput['funds_current'];
+			$newProject->funds_goal  	= $allInput['funds_goal'];
+			$newProject->stage 			= $allInput['stage'];
+			$newProject->video_url  	= $allInput['video_url'];
+			$newProject->user_id 		= $allInput['user_id'];
 
 			$newProject->save();
+			$genre->save();
+			
 			return Redirect::action('ProjectsController@index');
 		}
 
