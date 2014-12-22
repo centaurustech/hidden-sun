@@ -1,5 +1,5 @@
 #primary-row {
-	margin-top: 160px;
+	margin-top: 120px;
 	margin-bottom: 40px;
 }
 
@@ -15,17 +15,6 @@
 	padding: 0px;
 	margin: 0px;
 }
-
-.placeholder {
-    height: 50px;
-    width: 50px;
-    margin: 10px;
-    float: left;
-}
-
-.placeholder2 {
-    height: 50px;
-    width: 50px;
-    float: right;
-    top: right;
+body{
+  margin-top: 50px;
 }

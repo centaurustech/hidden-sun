@@ -84,30 +84,32 @@ class GenresTableSeeder extends Seeder {
 
         $genre = new Genre();
         $genre->genre = "Spanish Language";
-        $genre->save();
-
-        $genre = new Genre();
-        $genre->genre = "Fantasy";
+        $genre->parent_genre = "0";
         $genre->save();
 
         $genre = new Genre();
         $genre->genre = "Short Films";
+        $genre->parent_genre = "1";
         $genre->save();
 
         $genre = new Genre();
         $genre->genre = "Sports";
+        $genre->parent_genre = "1";
         $genre->save();
 
         $genre = new Genre();
         $genre->genre = "Thriller";
+        $genre->parent_genre = "1";
         $genre->save();
 
         $genre = new Genre();
         $genre->genre = "War Films";
+        $genre->parent_genre = "0";
         $genre->save();
 
         $genre = new Genre();
         $genre->genre = "Westerns";
+        $genre->parent_genre = "1";
         $genre->save();
 
      }
