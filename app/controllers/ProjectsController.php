@@ -1,7 +1,5 @@
 <?php
-
-class ProjectsController extends BaseController {
-
+class ProjectsController extends \BaseController {
 	/**
 	 * Display a listing of projects
 	 *
@@ -9,9 +7,9 @@ class ProjectsController extends BaseController {
 	 */
 	public function index()
 	{
-		$projects = Project::all();
-
-		return View::make('projects.index', compact('projects'));
+		//$projects = DB::table('projects')->orderBy('created_at', 'desc')->paginate(10);
+		$projects = Project::has('genres')->paginate(10);
+		return View::make('projects.index')->with('projects', $projects);
 	}
 
 	/**
@@ -33,9 +31,25 @@ class ProjectsController extends BaseController {
 	{
 		$validator = Validator::make($data = Input::all(), Project::$rules);
 
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
+		if ($validator->fails()) {
+			return Redirect::back()->withInput()->withErrors($validator);
+		} else {
+			$allInput = Input::all();
+			$newProject = new User();
+
+			if (Input::has('phone_number')){
+				$newUser->phone_number = $allInput['phone_number'];
+			}
+
+			$newProject->first_name = $allInput['first_name'];
+			$newProject->last_name  = $allInput['last_name'];
+			$newProject->city       = $allInput['city'];
+			$newProject->state      = $allInput['state'];
+			$newProject->email      = $allInput['email'];
+			$newProjectr->password  = $allInput['password'];
+
+			$newProject->save();
+			return Redirect::action('ProjectsController@index');
 		}
 
 		Project::create($data);
@@ -103,5 +117,17 @@ class ProjectsController extends BaseController {
 
 		return Redirect::route('projects.index');
 	}
+
+	public function showFunded(){
+
+
+	}
+
+	public function showNew() {
+
+
+	}
+
+
 
 }
