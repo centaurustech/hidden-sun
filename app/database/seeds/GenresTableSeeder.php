@@ -8,91 +8,106 @@ class GenresTableSeeder extends Seeder {
 		DB::table('genres')->delete();
 
 		$genre = new Genre();
-        $genre->genre = "action_adventure";
+        $genre->genre = "Action & Adventure";
+        $genre->parent_genre = "1";
         $genre->save();
 
         $genre = new Genre();
-        $genre->genre = "animation";
+        $genre->genre = "Animation";
+        $genre->parent_genre = "1";
         $genre->save();
 
         $genre = new Genre();
-        $genre->genre = "biopics";
+        $genre->genre = "Biopics";
+        $genre->parent_genre = "1";
         $genre->save();
 
         $genre = new Genre();
-        $genre->genre = "bollywood";
+        $genre->genre = "Children/Family";
+        $genre->parent_genre = "1";
         $genre->save();
 
         $genre = new Genre();
-        $genre->genre = "comedy";
+        $genre->genre = "Comedy";
+        $genre->parent_genre = "1";
         $genre->save();
 
         $genre = new Genre();
-        $genre->genre = "crime";
+        $genre->genre = "Crime";
+        $genre->parent_genre = "0";
         $genre->save();
 
         $genre = new Genre();
-        $genre->genre = "documentary";
+        $genre->genre = "Documentary";
+        $genre->parent_genre = "1";
         $genre->save();
 
         $genre = new Genre();
-        $genre->genre = "drama";
+        $genre->genre = "Drama";
+        $genre->parent_genre = "1";
         $genre->save();
 
         $genre = new Genre();
-        $genre->genre = "family"; 
+        $genre->genre = "Horror";
+        $genre->parent_genre = "1";
         $genre->save();
 
         $genre = new Genre();
-        $genre->genre = "horror";
+        $genre->genre = "Latino";
+        $genre->parent_genre = "0";
         $genre->save();
 
         $genre = new Genre();
-        $genre->genre = "music_documentary";
+        $genre->genre = "Music Documentary";
+        $genre->parent_genre = "0";
         $genre->save();
 
         $genre = new Genre();
-        $genre->genre = "musicals";
+        $genre->genre = "Musical";
+        $genre->parent_genre = "1";
         $genre->save();
 
         $genre = new Genre();
-        $genre->genre = "period_and_historical";
+        $genre->genre = "Period/Historical";
+        $genre->parent_genre = "0";
         $genre->save();
 
         $genre = new Genre();
-        $genre->genre = "romance";
+        $genre->genre = "Romance";
+        $genre->parent_genre = "1";
         $genre->save();
 
         $genre = new Genre();
-        $genre->genre = "science_fiction";
+        $genre->genre = "Science Fiction & Fantasy";
+        $genre->parent_genre = "1";
         $genre->save();
 
         $genre = new Genre();
-        $genre->genre = "fantasy";
+        $genre->genre = "Spanish Language";
         $genre->save();
 
         $genre = new Genre();
-        $genre->genre = "short_films";
+        $genre->genre = "Fantasy";
         $genre->save();
 
         $genre = new Genre();
-        $genre->genre = "sport";
+        $genre->genre = "Short Films";
         $genre->save();
 
         $genre = new Genre();
-        $genre->genre = "thriller";
+        $genre->genre = "Sports";
         $genre->save();
 
         $genre = new Genre();
-        $genre->genre = "war_films";
+        $genre->genre = "Thriller";
         $genre->save();
 
         $genre = new Genre();
-        $genre->genre = "westerns";
+        $genre->genre = "War Films";
         $genre->save();
 
         $genre = new Genre();
-        $genre->genre = "world_cinema";
+        $genre->genre = "Westerns";
         $genre->save();
 
      }

@@ -21,9 +21,6 @@ class UsersTableSeeder extends Seeder {
 				'city'=>$faker->city,
 				'state'=>$faker->state,
 				'activation_code'=> str_random(60)
-				
-
-
 			]);
 		}
 	}

@@ -11,16 +11,35 @@
 |
 */
 
+Route::get('test', function() {
+	$genre = Genre::find(5);
+	$attr = 'genre';
+
+	$direct = $genre->{$attr};
+	//$helper = object_get($genre, $attr);
+
+	return compact('direct', 'helper');
+});
+
 Route::get('/', array(
 	'as' => 'home',
 	'uses' => 'HomeController@showHomepage'
 ));
 
-Route::get('projects', 'ProjectsController@index');
-Route::get('projects/create', 'ProjectsController@createProject');
-Route::get('login', 'HomeController@showLogin');
+Route::get('projects/discover', array(
+	'as' => 'projects-discover',
+	'uses' => 'ProjectsController@index'
+));
 
 Route::resource('projects', 'ProjectsController');
+
+Route::get('projects/unfunded', 'ProjectsController@showUnfunded');
+
+
+
+//Route::get('login', 'HomeController@showLogin');
+
+//Route::resource('projects', 'ProjectsController');
 
 // if we were doing restful routing...
 //Route::resource('account', 'AccountController');
@@ -45,12 +64,24 @@ Route::group(array('before' => 'auth'), function() {
 		'uses' => 'AccountController@getChangePassword'
 	));
 
+	// Create project (GET)
+	Route::get('projects/create', array(
+		'as' => 'projects-create',
+		'uses' => 'ProjectsController@create'
+	));
+
 	// CSRF Protected group within authenticated users
 	Route::group(array('before' => 'csrf'), function(){
-			// Change password (GET)
+		// Change password (POST)
 		Route::post('account/change-password', array(
 			'as' => 'account-change-password-post',
 			'uses' => 'AccountController@postChangePassword'
+		));
+
+		// Create Project (POST)
+		Route::post('projects/create', array(
+			'as' => 'projects-create-post',
+			'uses' => 'ProjectsController@store'
 		));
 	});
 });
