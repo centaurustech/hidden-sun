@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-<p>views/account/create.blade.php</p>
+
 <h1>Sign Up</h1>
 
 <form class="form-horizontal" role="form" action="{{ URL::route('account-create-post') }}" method="post">
@@ -23,7 +23,7 @@
         </div>
     </div>
     <div class="form-group">    
-        <label for="password" class="col-sm-2 control-label"></label>
+        <label for="password" class="col-sm-2 control-label">Confrim Password</label>
         <div class="col-sm-10">
             {{ Form::password('password_again') }}
             @if($errors->has('password_again'))

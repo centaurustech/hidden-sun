@@ -16,7 +16,6 @@ Route::get('/', array(
 	'uses' => 'HomeController@showHomepage'
 ));
 
-Route::get('projects', 'ProjectsController@index');
 Route::get('projects/create', 'ProjectsController@createProject');
 Route::get('login', 'HomeController@showLogin');
 

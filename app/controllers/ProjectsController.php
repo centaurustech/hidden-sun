@@ -1,6 +1,6 @@
 <?php
 
-class ProjectsController extends \BaseController {
+class ProjectsController extends BaseController {
 
 	/**
 	 * Display a listing of projects
