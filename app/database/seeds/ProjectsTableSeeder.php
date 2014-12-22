@@ -1,12 +1,12 @@
 <?php
 
-// Composer: "fzaninotto/faker": "v1.3.0"
-
 class ProjectsTableSeeder extends Seeder {
 
 	public function run()
 	{
-		DB::table('projects')->delete();
+        $genres = Genre::all();
+
+    	DB::table('projects')->delete();
 
         $project = new Project();
         $project->project_title = "Juarassic Shark";
@@ -19,7 +19,9 @@ class ProjectsTableSeeder extends Seeder {
         $project->stage = "pre-production";
         $project->video_url = 'http://www.youtube.com/embed/jRf0oU3sdqA'; 
         $project->user_id = 3;
+        $genre = $genres->random();
         $project->save();
+        $project->genres()->attach($genre->id);
 
         $project = new Project();
         $project->project_title = "The Stepfather";
@@ -32,7 +34,9 @@ class ProjectsTableSeeder extends Seeder {
         $project->stage = "pre-production";
         $project->video_url = 'https://www.youtube.com/watch?v=XYEBV5FsG88'; 
         $project->user_id = 3;
+        $genre = $genres->random();
         $project->save();
+        $project->genres()->attach($genre->id);
 
         $project = new Project();
         $project->project_title = "Wedding Smashers";
@@ -45,7 +49,9 @@ class ProjectsTableSeeder extends Seeder {
         $project->stage = "pre-production";
         $project->video_url = 'https://www.youtube.com/watch?v=kL5c2szf3E4'; 
         $project->user_id = 10;
+        $genre = $genres->random();
         $project->save();
+        $project->genres()->attach($genre->id);
 
         $project = new Project();
         $project->project_title = "Gone with the air";
@@ -58,7 +64,9 @@ class ProjectsTableSeeder extends Seeder {
         $project->stage = "pre-production";
         $project->video_url; 
         $project->user_id = 8;
+        $genre = $genres->random();
         $project->save();
+        $project->genres()->attach($genre->id);
 
         $project = new Project();
         $project->project_title = "Code Life";
@@ -71,7 +79,9 @@ class ProjectsTableSeeder extends Seeder {
         $project->stage = "pre-production";
         $project->video_url = 'https://www.youtube.com/watch?v=ZirgAYBcOgo'; 
         $project->user_id = 7;
+        $genre = $genres->random();
         $project->save();
+        $project->genres()->attach($genre->id);
 
         $project = new Project();
         $project->project_title = "Star Battles";
@@ -84,7 +94,9 @@ class ProjectsTableSeeder extends Seeder {
         $project->stage = "pre-production";
         $project->video_url = 'https://www.youtube.com/watch?v=OMOVFvcNfvE'; 
         $project->user_id = 4;
+        $genre = $genres->random();
         $project->save();
+        $project->genres()->attach($genre->id);
 
         $project = new Project();
         $project->project_title = "Saving coder Ryan";
@@ -97,7 +109,9 @@ class ProjectsTableSeeder extends Seeder {
         $project->stage = "pre-production";
         $project->video_url = 'https://www.youtube.com/watch?v=vwAxi4A2YcY'; 
         $project->user_id = 2;
+        $genre = $genres->random();
         $project->save();
+        $project->genres()->attach($genre->id);
 
         $project = new Project();
         $project->project_title = "Freezing";
@@ -110,7 +124,9 @@ class ProjectsTableSeeder extends Seeder {
         $project->stage = "pre-production";
         $project->video_url = 'https://www.youtube.com/watch?v=TbQm5doF_Uc'; 
         $project->user_id = 7;
+        $genre = $genres->random();
         $project->save();
+        $project->genres()->attach($genre->id);
 
         $project = new Project();
         $project->project_title = "Cubicle Space";
@@ -123,7 +139,9 @@ class ProjectsTableSeeder extends Seeder {
         $project->stage = "pre-production";
         $project->video_url = 'https://www.youtube.com/watch?v=_IwzZYRejZQ'; 
         $project->user_id = 9;
+        $genre = $genres->random();
         $project->save();
+        $project->genres()->attach($genre->id);
 
         $project = new Project();
         $project->project_title = "Wolf of ceiling st";
@@ -136,7 +154,9 @@ class ProjectsTableSeeder extends Seeder {
         $project->stage = "pre-production";
         $project->video_url = 'https://www.youtube.com/watch?v=iszwuX1AK6A'; 
         $project->user_id = 3;
+        $genre = $genres->random();
         $project->save();
+        $project->genres()->attach($genre->id);
 
         $project = new Project();
         $project->project_title = "Planet of the Monkeys";
@@ -149,7 +169,9 @@ class ProjectsTableSeeder extends Seeder {
         $project->stage = "pre-production";
         $project->video_url ='https://www.youtube.com/watch?v=iYdZpCFAfUg'; 
         $project->user_id = 4;
+        $genre = $genres->random();
         $project->save();
+        $project->genres()->attach($genre->id);
 
         $project = new Project();
         $project->project_title = "New School";
@@ -162,7 +184,9 @@ class ProjectsTableSeeder extends Seeder {
         $project->stage = "pre-production";
         $project->video_url ='https://www.youtube.com/watch?v=VqtymOtKr48'; 
         $project->user_id = 1;
+        $genre = $genres->random();
         $project->save();
+        $project->genres()->attach($genre->id);
 
         $project = new Project();
         $project->project_title = "Superthing";
@@ -175,7 +199,9 @@ class ProjectsTableSeeder extends Seeder {
         $project->stage = "pre-production";
         $project->video_url ='https://www.youtube.com/watch?v=T6DJcgm3wNY'; 
         $project->user_id = 2;
+        $genre = $genres->random();
         $project->save();
+        $project->genres()->attach($genre->id);
 
         $project = new Project();
         $project->project_title = "Black Hole";
@@ -188,7 +214,9 @@ class ProjectsTableSeeder extends Seeder {
         $project->stage = "pre-production";
         $project->video_url ='https://www.youtube.com/watch?v=OVlnER8SxfQ'; 
         $project->user_id = 3;
+        $genre = $genres->random();
         $project->save();
+        $project->genres()->attach($genre->id);
 
         $project = new Project();
         $project->project_title = "Boomshackalaka";
@@ -201,9 +229,8 @@ class ProjectsTableSeeder extends Seeder {
         $project->stage = "pre-production";
         $project->video_url ='https://www.youtube.com/watch?v=bOL1R_W50bo'; 
         $project->user_id = 3;
+        $genre = $genres->random();
         $project->save();
-
-
+        $project->genres()->attach($genre->id);
 	}
-
 }

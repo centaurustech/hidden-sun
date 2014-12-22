@@ -11,6 +11,16 @@
 |
 */
 
+Route::get('test', function() {
+	$genre = Genre::find(5);
+	$attr = 'genre';
+
+	$direct = $genre->{$attr};
+	//$helper = object_get($genre, $attr);
+
+	return compact('direct', 'helper');
+});
+
 Route::get('/', array(
 	'as' => 'home',
 	'uses' => 'HomeController@showHomepage'
@@ -21,6 +31,9 @@ Route::get('projects/discover', array(
 	'uses' => 'ProjectsController@index'
 ));
 
+Route::resource('projects', 'ProjectsController');
+
+Route::get('projects/unfunded', 'ProjectsController@showUnfunded');
 
 
 

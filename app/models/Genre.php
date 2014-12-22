@@ -2,34 +2,27 @@
 
 class Genre extends BaseModel {
 
+	// protected $appends = array('genre');
+	
+	public function getGenreAttribute() {
+		//loop through $this->genres making a comma seperated list, return it.
+		$genre = $this->attributes['genre'];
+		//$genre_list = implode(', ', $genre_list);
+		return $genre . ',';
+	}
+		
 	// Add your validation rules here
 	public static $rules = [
-		'project_title'		=> 'required|max:100',
-		'synopsis'			=> 'required|max:1000',
-		'start_date'		=> 'required',
-		'complete_date'		=> '',
-		'funds_end_date'	=> 'required',
-		'funds_current'		=> 'required',
-		'funds_goal'		=> 'required',
-		'stage'				=> 'required',
-		'video_url'			=> '',
-
+		'genre'		=> 'required|max:50'
 		];
-		// 'title' => 'required'
 
 	protected $table = 'genres';
 
-	public function user()
-	{
-    	return $this->belongsTo('User');
-	}
-
 	public function projects()
 	{
-		return $this->belongsToMany('Project');
+		return $this->hasMany ('Project');
 	}
 
-	// Don't forget to fill this array
-	protected $fillable = [];
+	protected $fillable = array('genre');
 
 }

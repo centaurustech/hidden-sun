@@ -9,13 +9,18 @@
 	</tr>
 	@foreach ($projects as $project)
 		<tr>
-			<td>{{ $project->video_url }}</td>
+			<td>
+				<iframe width="100" height="56" src="{{ $project->video_url }}" frameborder="0" allowfullscreen></iframe>
+			</td>
 			<td>{{ $project->project_title }}</td>
-			<td>Genre</td>
+			<td>
+			@foreach ($project->genres as $genre)
+				{{ $genre->genre }} 
+			@endforeach
+			</td>
 			<td>{{ $project->funds_end_date }}</td>
 		</tr>
 	@endforeach
-
-	{{ $projects->links() }}
+{{ $projects->links() }}
 </table>
 @stop
