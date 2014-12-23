@@ -4,20 +4,16 @@ class Project extends BaseModel {
 	
 	public function getGenreListAttribute() {
 		$genreList = '';
-
+		$genreNames = [];
 		foreach ($this->genres as $genre) {
 			if(sizeof($this->genres) <= 1) {
 				$genreList = $genre->genre;
 			} else {
 				// concat genre->name thing with ,
-				if($genre !== null) {
 					$genreList = $genreList . $genre->genre . ', ';
-				} else {
-					$genreList = $genreList . $genre;
-				}
 			}
 		}
-		
+
 		return $genreList;
 	}
 

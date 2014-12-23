@@ -7,8 +7,6 @@ class GenreProjectTableSeeder extends Seeder {
 
 	public function run()
 	{
-		
-
 		foreach(range(1, 15) as $index)
 		{
             DB::table('genre_project')->insert(array(
@@ -18,3 +16,4 @@ class GenreProjectTableSeeder extends Seeder {
 	}
 
 }
+
