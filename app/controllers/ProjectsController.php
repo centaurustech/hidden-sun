@@ -8,7 +8,6 @@ class ProjectsController extends \BaseController {
 	 */
 	public function index()
 	{
-		//$projects = DB::table('projects')->orderBy('created_at', 'desc')->paginate(10);
 		$projects = Project::has('genres')->paginate(10);
 		return View::make('projects.index')->with('projects', $projects);
 	}
@@ -67,8 +66,7 @@ class ProjectsController extends \BaseController {
 	public function show($id)
 	{
 		$project = Project::findOrFail($id);
-
-		return View::make('projects.show', compact('project'));
+		return View::make('projects.show')->with('project', $project);
 	}
 
 	/**

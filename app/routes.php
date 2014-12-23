@@ -122,3 +122,5 @@ Route::group(array('before' => 'guest'), function(){
 		'uses' => 'AccountController@getActivate'
 	));
 });
+
+Route::get('projects/{$id}', 'ProjectsController@show');

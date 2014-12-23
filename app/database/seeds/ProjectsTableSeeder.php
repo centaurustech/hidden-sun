@@ -9,8 +9,8 @@ class ProjectsTableSeeder extends Seeder {
     	DB::table('projects')->delete();
 
         $project = new Project();
-        $project->project_title = "Juarassic Shark";
-        $project->synopsis = "Huge deadly shark";
+        $project->project_title = "Jurassic Shark";
+        $project->synopsis = "A prehistoric shark has been discovered and is reaking havoc in the pacific ocean";
         $project->start_date = '2016-01-01';
         $project->complete_date = '9999-01-01';
         $project->funds_goal = 5000;
@@ -23,7 +23,7 @@ class ProjectsTableSeeder extends Seeder {
 
         $project = new Project();
         $project->project_title = "The Stepfather";
-        $project->synopsis = "Michael Borleone must take over the family business of italian sandwich shops";
+        $project->synopsis = "Michael Borleone must take over the family business of italian sandwich shops while fighting off bitter rivals";
         $project->start_date = '2015-05-04';
         $project->complete_date = '2015-09-01';
         $project->funds_goal = 10000;
@@ -153,7 +153,7 @@ class ProjectsTableSeeder extends Seeder {
 
         $project = new Project();
         $project->project_title = "New School";
-        $project->synopsis = "BJ and his old buddies have to go back to school in order to save his previous fraternity from sudden doom";
+        $project->synopsis = "BJ and his old buddies have to go back to school in order to save his old fraternity from sudden doom";
         $project->start_date = '2016-01-01';
         $project->complete_date = '9999-01-01';
         $project->funds_goal = 100000;
@@ -166,7 +166,7 @@ class ProjectsTableSeeder extends Seeder {
 
         $project = new Project();
         $project->project_title = "Superthing";
-        $project->synopsis = "A new hero has emerged from the shadows but is he really here to help us or is he here to take over";
+        $project->synopsis = "A new hero has emerged from the shadows but is he really here to help us or is he here to take over?";
         $project->start_date = '2015-09-23';
         $project->complete_date = '9999-01-01';
         $project->funds_goal = 45000;
