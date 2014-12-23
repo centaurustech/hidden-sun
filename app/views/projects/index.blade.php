@@ -7,7 +7,9 @@
 		</tr>
 		@foreach ($genres as $genre)
 		<tr><td>
-			{{ $genre->genre }}
+			<a href="?genre={{ $genre->id }}">
+				{{ $genre->genre }}
+			</a>
 		</td></tr>
 		@endforeach
 	</table>
@@ -23,9 +25,7 @@
 					<table>
 						<tr><td><b>Title: </b>{{ $project->project_title }}</td></tr>
 						<tr><td><b>Genre: </b>
-							@foreach ($project->genres as $genre)
-								{{ $genre->genre }} 
-							@endforeach
+							{{{ $project->genre_list }}}
 						</td></tr>
 						<tr><td><b>Goal: </b>{{ $project->funds_goal }}</td></tr>
 						<tr><td><b>Currently Funded: </b>{{ $project->funds_current }}</td></tr>
@@ -35,6 +35,8 @@
 			</tr>
 		@endforeach
 	</table>
+	@if (!Input::has('genre'))
 		{{ $projects->links() }}
+	@endif
 </div>
 @stop

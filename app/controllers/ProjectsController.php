@@ -8,7 +8,13 @@ class ProjectsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$projects = Project::has('genres')->paginate(10);
+		if(Input::has('genre')) {
+			$genre_id = Input::get('genre');
+			$projects = Genre::find($genre_id)->projects;
+		} else {
+			$projects = Project::has('genres')->paginate(10);
+		}
+		
 		$genres = Genre::where('parent_genre', '=', '1')->get();
 		return View::make('projects.index')->with(array('projects' => $projects, 'genres' => $genres));
 	}
@@ -20,7 +26,9 @@ class ProjectsController extends \BaseController {
 	 */
 	public function create()
 	{
-		return View::make('projects.create');
+		$main_genres = Genre::where('parent_genre', '=', '1')->get();
+		$secondary_genres = Genre::all();
+		return View::make('projects.create')->with(array('main_genres' => $main_genres, 'secondary_genres' => $secondary_genres));
 	}
 
 	/**
@@ -37,10 +45,11 @@ class ProjectsController extends \BaseController {
 		} else {
 			$allInput = Input::all();
 			$newProject = new Project();
-			$genre = new Genre();
 
 			$newProject->project_title 	= $allInput['project_title'];
-			$genre->genre 				= $allInput['genre'];
+			$genre_id					= (integer) $allInput['genre'];
+			$genre2_id					= (integer) $allInput['genre2'];
+			$genre3_id					= (integer) $allInput['genre3'];
 			$newProject->synopsis  		= $allInput['synopsis'];
 			$newProject->start_date     = $allInput['start_date'];
 			$newProject->complete_date  = $allInput['complete_date'];
@@ -52,8 +61,13 @@ class ProjectsController extends \BaseController {
 			$newProject->user_id 		= $allInput['user_id'];
 
 			$newProject->save();
-			$genre->save();
-			
+
+			$project_id = $newProject->id;
+			$project = Project::find($project_id);
+			$project->genres()->attach($genre_id);
+			$project->genres()->attach($genre2_id);
+			$project->genres()->attach($genre3_id);
+
 			return Redirect::action('ProjectsController@index');
 		}
 
