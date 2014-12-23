@@ -31,7 +31,6 @@ Route::get('projects/discover', array(
 	'uses' => 'ProjectsController@index'
 ));
 
-Route::resource('projects', 'ProjectsController');
 
 Route::get('projects/unfunded', 'ProjectsController@showUnfunded');
 
@@ -121,4 +120,11 @@ Route::group(array('before' => 'guest'), function(){
 		'as' => 'account-activate',
 		'uses' => 'AccountController@getActivate'
 	));
+	
+	Route::get('/projects/fund', array(
+		'as' => 'projects-fund',
+		'uses' => 'ProjectsController@showFunded'
+	));
 });
+
+Route::resource('projects', 'ProjectsController');

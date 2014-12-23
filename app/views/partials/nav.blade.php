@@ -14,7 +14,11 @@
     <div class="collapse navbar-collapse" id="navbar-collapse-1" style="padding-left:20px;">
         <ul class="nav navbar-nav navbar-left" style="margin-left:20px">
             <li><a href="{{ URL::route('projects-discover') }}">Discover</a></li>
-            <li><a href="{{ URL::route('projects-create') }}">Get Funding</a></li>
+            @if(Auth::check())
+                <li><a href="{{ URL::route('projects-create') }}">Create Project</a></li>
+            @else
+                <li><a href="{{ URL::route('projects-fund') }}"></a>Fund a Project</li>
+            @endif
             <li><a href="#">Scout Locations</a></li>
         </ul>  
 

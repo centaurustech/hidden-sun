@@ -120,9 +120,9 @@ class ProjectsController extends \BaseController {
 		return Redirect::route('projects.index');
 	}
 
-	public function showFunded(){
-
-
+	public function showFunded()
+	{
+		return View::make('projects.fund');
 	}
 
 	public function showNew() {
