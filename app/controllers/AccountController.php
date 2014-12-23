@@ -135,7 +135,43 @@ class AccountController extends BaseController {
 
 		}
 
-		return Redirect::reoute('account-change-password')->with('global', 'Your password could not be changed.');
+		return Redirect::route('account-change-password')->with('global', 'Your password could not be changed.');
 	}
+
+	// Method to update personal account information
+	public function updatePersonalInformation($id){
+		$user_to_update = User::findOrFail($id);
+
+		$validator = Validator::make($data = Input::all(), User::$rules);
+
+		if ($validator->fails()) {
+			return Redirect::back()->withInput()->withErrors($validator);
+		} else {
+
+			$user_to_update->first_name = Input::get('first_name');
+			$user_to_update->last_name = Input::get('last_name');
+			$user_to_update->phone_number = Input::get('phone_number');
+			$user_to_update->city = Input::get('city');
+			$user_to_update->state = Input::get('state');
+
+			$user_to_update->save();
+
+			return Redirect::route('manage-account');
+		}
+
+		return Redirect::route('manage-account');
+	}
+
+	public function showManageAccount() {
+		$current_user = Auth::user();
+		return View::make('account.manage')->with('current_user', $current_user);
+	}
+
+	public function showEditPersonal() {
+		$current_user = Auth::user();
+		return View::make('account.edit-personal')->with('current_user', $current_user);
+	}
+
+
 
 }
