@@ -26,7 +26,7 @@
     	   @if(Auth::check())
                 <li>Hello, {{ Auth::user()->first_name }}</li>
         		<li><a href="{{ URL::route('account-sign-out') }}">Sign Out</a></li>
-                <li><a href="{{ URL::route('account-change-password') }}">Account Settings</a></li>
+                <li><a href="{{ URL::route('manage-account') }}">Manage Account</a></li>
         	@else
         		<li><a href="/account/create">Sign Up</a></li>
         		<li><a href="{{ URL::route('account-sign-in') }}">Sign In</a></li>

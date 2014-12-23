@@ -38,12 +38,36 @@
         </div>
     </div>    
     <div class="form-group">    
-        <label for="genre" class="col-sm-2 control-label">Genre(s)</label>
+        <label for="genre" class="col-sm-2 control-label">Genre</label>
         <div class="col-sm-10">
-            <input id="genre" type="text" name="genre" class="ui-autocomplete-input" autocomplete="on">
+            <select name="genre">
+                @foreach ($main_genres as $genre)
+                    <option value="{{ $genre->id }}">{{ $genre->genre }}</option>
+                @endforeach
+            </select>
             @if($errors->has('genre'))
                 {{ $errors->first('genre') }}
             @endif
+        </div>
+    </div>
+    <div class="form-group">    
+        <label for="genre" class="col-sm-2 control-label">Other Genre (optional)</label>
+        <div class="col-sm-10">
+            <select name="genre2">
+                @foreach ($secondary_genres as $genre)
+                    <option value="{{ $genre->id }}" selected="99">{{ $genre->genre }}</option>
+                @endforeach
+            </select>
+        </div>
+    </div>
+    <div class="form-group">    
+        <label for="genre" class="col-sm-2 control-label">Other Genre (optional)</label>
+        <div class="col-sm-10">
+            <select name="genre3">
+                @foreach ($secondary_genres as $genre)
+                    <option value="{{ $genre->id }}" selected="99">{{ $genre->genre }}</option>
+                @endforeach
+            </select>
         </div>
     </div>
     <div class="form-group">    

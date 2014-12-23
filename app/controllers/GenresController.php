@@ -42,10 +42,12 @@ class GenresController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($id = 1)
 	{
-		$genre = Genre::find($id);
-		return View::make('genres.show')->with('genre', $genre);
+		dd("you made it");
+		//$genre = Genre::find($id);
+		//return View::make('genres.show')->with('genre', $genre);
+		//return "you made it to " . $genre;
 	}
 
 	/**
