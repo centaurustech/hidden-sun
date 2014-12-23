@@ -30,6 +30,7 @@
 						<tr><td><b>Goal: </b>{{ $project->funds_goal }}</td></tr>
 						<tr><td><b>Currently Funded: </b>{{ $project->funds_current }}</td></tr>
 						<tr><td><b>Funding Ends: </b>{{ $project->funds_end_date }}</td></tr>
+						<tr><td><a href="{{ $project->id }}">See Project</a></td></tr>
 					</table>
 				</td>
 			</tr>
