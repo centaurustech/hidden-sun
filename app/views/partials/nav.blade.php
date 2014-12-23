@@ -1,5 +1,5 @@
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="font-family: 'Slackey', cursive; font-size: 18px;">
-  <div class="container-fluid">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="font-family: 'Slackey', cursive; font-size: 18px; z-index: 100;">
+  <div class="container">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1">
             <span class="sr-only">Toggle navigation</span>
@@ -22,7 +22,7 @@
     	   @if(Auth::check())
                 <li>Hello, {{ Auth::user()->first_name }}</li>
         		<li><a href="{{ URL::route('account-sign-out') }}">Sign Out</a></li>
-                <li><a href="{{ URL::route('account-change-password') }}">Account Settings</a></li>
+                <li><a href="{{ URL::route('manage-account') }}">Manage Account</a></li>
         	@else
         		<li><a href="/account/create">Sign Up</a></li>
         		<li><a href="{{ URL::route('account-sign-in') }}">Sign In</a></li>
@@ -30,7 +30,3 @@
         </ul>
     </div>
 </nav>
-@if (Request::path() == 'projects/discover')
-    @yield('genres-nav')
-@endif
-

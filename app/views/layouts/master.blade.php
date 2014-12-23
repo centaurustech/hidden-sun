@@ -3,7 +3,6 @@
 	@include('partials.header')
 <body>
 	@include('partials.nav')
-	@include('partials.genres_nav')
 	<div class="row" id="primary-row">
 		<div class="container" id="primary-container">
 			<!-- Checks if variable global exists and outputs the value. -->

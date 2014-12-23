@@ -1,5 +1,5 @@
 #primary-row {
-	margin-top: 160px;
+	margin-top: 120px;
 	margin-bottom: 40px;
 }
 
@@ -14,4 +14,8 @@
 #footer-container {
 	padding: 0px;
 	margin: 0px;
+}
+
+body{
+  margin-top: 50px;
 }

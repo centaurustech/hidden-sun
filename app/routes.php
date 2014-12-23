@@ -11,16 +11,6 @@
 |
 */
 
-Route::get('test', function() {
-	$genre = Genre::find(5);
-	$attr = 'genre';
-
-	$direct = $genre->{$attr};
-	//$helper = object_get($genre, $attr);
-
-	return compact('direct', 'helper');
-});
-
 Route::get('/', array(
 	'as' => 'home',
 	'uses' => 'HomeController@showHomepage'
@@ -31,23 +21,16 @@ Route::get('projects/discover', array(
 	'uses' => 'ProjectsController@index'
 ));
 
-Route::resource('projects', 'ProjectsController');
-
 Route::get('projects/unfunded', 'ProjectsController@showUnfunded');
-
-
-
-//Route::get('login', 'HomeController@showLogin');
-
-//Route::resource('projects', 'ProjectsController');
-
-// if we were doing restful routing...
-//Route::resource('account', 'AccountController');
 
 Route::get('/user/{user_id}', array(
 	'as' => 'profile-user',
 	'uses' => 'ProfileController@user'
 ));
+
+Route::get('projects/sortbygenre/{id}', function($id){
+	return "you made it" . $id;
+});
 
 // Routes for authenticated users
 Route::group(array('before' => 'auth'), function() {
@@ -58,10 +41,22 @@ Route::group(array('before' => 'auth'), function() {
 		'uses' => 'AccountController@getSignout'
 	));
 
+	// Account settings page (GET)
+	Route::get('/account/settings', array(
+		'as' => 'manage-account',
+		'uses' => 'AccountController@showManageAccount'
+	));
+
 	// Change password (GET)
 	Route::get('account/change-password', array(
 		'as' => 'account-change-password',
 		'uses' => 'AccountController@getChangePassword'
+	));
+
+	// edit personal information (GET)
+	Route::get('account/update-personal', array(
+		'as' => 'account-edit-personal',
+		'uses' => 'AccountController@showEditPersonal'
 	));
 
 	// Create project (GET)
@@ -82,6 +77,12 @@ Route::group(array('before' => 'auth'), function() {
 		Route::post('projects/create', array(
 			'as' => 'projects-create-post',
 			'uses' => 'ProjectsController@store'
+		));
+
+		// Edit personal information (PUT)
+		Route::put('account/update-personal/{id}', array(
+			'as' => 'account-edit-personal-put',
+			'uses' => 'AccountController@updatePersonalInformation'
 		));
 	});
 });
@@ -110,7 +111,6 @@ Route::group(array('before' => 'guest'), function(){
 		'uses' => 'AccountController@getSignin'
 	));
 
-
 	// Create account (GET)
 	Route::get('/account/create', array(
 		'as' => 'account-create',
@@ -123,4 +123,5 @@ Route::group(array('before' => 'guest'), function(){
 	));
 });
 
-Route::get('projects/{$id}', 'ProjectsController@show');
+Route::resource('projects', 'ProjectsController');
+

@@ -27,6 +27,7 @@
 <h1>Create A New Project</h1>
 
 <form class="form-horizontal" role="form" action="{{ URL::route('projects-create-post') }}" method="post">
+    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
     <div class="form-group">    
         <label for="project_title" class="col-sm-2 control-label">Project Name</label>
         <div class="col-sm-10">
@@ -37,12 +38,36 @@
         </div>
     </div>    
     <div class="form-group">    
-        <label for="genre" class="col-sm-2 control-label">Genre(s)</label>
+        <label for="genre" class="col-sm-2 control-label">Genre</label>
         <div class="col-sm-10">
-            <input id="genre" type="text" name="genre" class="ui-autocomplete-input" autocomplete="on">
+            <select name="genre">
+                @foreach ($main_genres as $genre)
+                    <option value="{{ $genre->id }}">{{ $genre->genre }}</option>
+                @endforeach
+            </select>
             @if($errors->has('genre'))
                 {{ $errors->first('genre') }}
             @endif
+        </div>
+    </div>
+    <div class="form-group">    
+        <label for="genre" class="col-sm-2 control-label">Other Genre (optional)</label>
+        <div class="col-sm-10">
+            <select name="genre2">
+                @foreach ($secondary_genres as $genre)
+                    <option value="{{ $genre->id }}" selected="99">{{ $genre->genre }}</option>
+                @endforeach
+            </select>
+        </div>
+    </div>
+    <div class="form-group">    
+        <label for="genre" class="col-sm-2 control-label">Other Genre (optional)</label>
+        <div class="col-sm-10">
+            <select name="genre3">
+                @foreach ($secondary_genres as $genre)
+                    <option value="{{ $genre->id }}" selected="99">{{ $genre->genre }}</option>
+                @endforeach
+            </select>
         </div>
     </div>
     <div class="form-group">    
@@ -82,15 +107,31 @@
         </div>
     </div>   
     <div class="form-group">    
-        <label for="goal_amount" class="col-sm-2 control-label">Goal Amount</label>
+        <label for="funds_current" class="col-sm-2 control-label">Currently Funded</label>
         <div class="col-sm-10">
-            {{ Form::text('goal_amount', Input::old('goal_amount')) }} 
+            {{ Form::text('funds_current', Input::old('funds_current')) }} 
+        </div>
+    </div>    
+    <div class="form-group">    
+        <label for="goal_amount" class="col-sm-2 control-label">Funding Goal</label>
+        <div class="col-sm-10">
+            {{ Form::text('funds_goal', Input::old('funds_goal')) }} 
         </div>
     </div>
-    <div class="form-group">
-        <label for="fileupload" class="col-sm-2 control-lable">Upload File</label>
+    <div class="form-group">    
+        <label for="stage" class="col-sm-2 control-label">Stage of Production</label>
         <div class="col-sm-10">
-            <input id="fileupload" type="file" name="files[]" multiple="">
+            <select name="stage">
+                <option value="pre-production">Pre-Production</option>
+                <option value="in-production">In-Production</option>
+                <option value="post-production">Post-Production</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">    
+        <label for="video_url" class="col-sm-2 control-label">Video URL</label>
+        <div class="col-sm-10">
+            {{ Form::text('video_url', Input::old('funds_goal')) }} 
         </div>
     </div>
     {{ Form::token() }}
