@@ -85,7 +85,12 @@ class ProjectsController extends \BaseController {
 	public function show($id)
 	{
 		$project = Project::findOrFail($id);
-		return View::make('projects.show')->with('project', $project);
+
+		$currently_funded = (integer) $project->funds_current;
+		$funding_goal = (integer) $project->funds_goal;
+		$funding_progress = ($currently_funded / $funding_goal) * 100;
+
+		return View::make('projects.show')->with(array('project' => $project, 'funding_progress' => $funding_progress));
 	}
 
 	/**
