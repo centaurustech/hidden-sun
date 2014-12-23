@@ -30,7 +30,7 @@ class ProjectsTableSeeder extends Seeder {
         $project->funds_current = 2000;
         $project->funds_end_date = '2016-01-02';
         $project->stage = "pre-production";
-        $project->video_url = 'https://www.youtube.com/watch?v=XYEBV5FsG88'; 
+        $project->video_url = 'http://www.youtube.com/embed/sY1S34973zA'; 
         $project->user_id = $user->id;
         $project->save();
 
@@ -43,7 +43,7 @@ class ProjectsTableSeeder extends Seeder {
         $project->funds_current = 0;
         $project->funds_end_date = '2015-03-02';
         $project->stage = "pre-production";
-        $project->video_url = 'https://www.youtube.com/watch?v=kL5c2szf3E4'; 
+        $project->video_url = 'http://www.youtube.com/embed/ZeUSo8voIXM'; 
         $project->user_id = $user->id;
         $project->save();
 
@@ -56,7 +56,7 @@ class ProjectsTableSeeder extends Seeder {
         $project->funds_current = 4000;
         $project->funds_end_date = '2016-01-02';
         $project->stage = "pre-production";
-        $project->video_url; 
+        $project->video_url = 'http://www.youtube.com/embed/8mM8iNarcRc'; 
         $project->user_id = $user->id;
         $project->save();
 
@@ -69,7 +69,7 @@ class ProjectsTableSeeder extends Seeder {
         $project->funds_current = 96784;
         $project->funds_end_date = '2016-01-02';
         $project->stage = "pre-production";
-        $project->video_url = 'https://www.youtube.com/watch?v=ZirgAYBcOgo'; 
+        $project->video_url = 'http://www.youtube.com/embed/ZirgAYBcOgo'; 
         $project->user_id = $user->id;
         $project->save();
 
@@ -82,7 +82,7 @@ class ProjectsTableSeeder extends Seeder {
         $project->funds_current = 1;
         $project->funds_end_date = '2018-10-03';
         $project->stage = "pre-production";
-        $project->video_url = 'https://www.youtube.com/watch?v=OMOVFvcNfvE'; 
+        $project->video_url = 'http://www.www.youtube.com/embed/OMOVFvcNfvE'; 
         $project->user_id = $user->id;
         $project->save();
 
@@ -95,7 +95,7 @@ class ProjectsTableSeeder extends Seeder {
         $project->funds_current = 3000;
         $project->funds_end_date = '2016-01-02';
         $project->stage = "pre-production";
-        $project->video_url = 'https://www.youtube.com/watch?v=vwAxi4A2YcY'; 
+        $project->video_url = 'http://www.youtube.com/embed/zwhP5b4tD6g'; 
         $project->user_id = $user->id;
         $project->save();
 
@@ -108,7 +108,7 @@ class ProjectsTableSeeder extends Seeder {
         $project->funds_current = 4300;
         $project->funds_end_date = '2015-01-05';
         $project->stage = "pre-production";
-        $project->video_url = 'https://www.youtube.com/watch?v=TbQm5doF_Uc'; 
+        $project->video_url = 'http://www.youtube.com/embed/TbQm5doF_Uc'; 
         $project->user_id = $user->id;
         $project->save();
 
@@ -121,7 +121,7 @@ class ProjectsTableSeeder extends Seeder {
         $project->funds_current = 100;
         $project->funds_end_date = '2015-02-25';
         $project->stage = "pre-production";
-        $project->video_url = 'https://www.youtube.com/watch?v=_IwzZYRejZQ'; 
+        $project->video_url = 'http://youtube.com/embed/_IwzZYRejZQ'; 
         $project->user_id = $user->id;
         $project->save();
 
@@ -134,7 +134,7 @@ class ProjectsTableSeeder extends Seeder {
         $project->funds_current = 20000;
         $project->funds_end_date = '2016-01-02';
         $project->stage = "pre-production";
-        $project->video_url = 'https://www.youtube.com/watch?v=iszwuX1AK6A'; 
+        $project->video_url = 'http://youtube.com/embed/iszwuX1AK6A'; 
         $project->user_id = $user->id;
         $project->save();
 
@@ -147,7 +147,7 @@ class ProjectsTableSeeder extends Seeder {
         $project->funds_current = 50;
         $project->funds_end_date = '2015-03-10';
         $project->stage = "pre-production";
-        $project->video_url ='https://www.youtube.com/watch?v=iYdZpCFAfUg'; 
+        $project->video_url ='http://www.youtube.com/embed/R6oOuWiDYlo'; 
         $project->user_id = $user->id;
         $project->save();
 
@@ -160,7 +160,7 @@ class ProjectsTableSeeder extends Seeder {
         $project->funds_current = 3000;
         $project->funds_end_date = '2015-03-04';
         $project->stage = "pre-production";
-        $project->video_url ='https://www.youtube.com/watch?v=VqtymOtKr48'; 
+        $project->video_url ='http://www.youtube.com/embed/VqtymOtKr48'; 
         $project->user_id = $user->id;
         $project->save();
 
@@ -173,7 +173,7 @@ class ProjectsTableSeeder extends Seeder {
         $project->funds_current = 1000;
         $project->funds_end_date = '2015-02-04';
         $project->stage = "pre-production";
-        $project->video_url ='https://www.youtube.com/watch?v=T6DJcgm3wNY'; 
+        $project->video_url ='http://www.youtube.com/embed/68hRt0Pz7HI'; 
         $project->user_id = $user->id;
         $project->save();
 
@@ -186,7 +186,7 @@ class ProjectsTableSeeder extends Seeder {
         $project->funds_current = 350;
         $project->funds_end_date = '2015-05-23';
         $project->stage = "pre-production";
-        $project->video_url ='https://www.youtube.com/watch?v=OVlnER8SxfQ'; 
+        $project->video_url ='http://www.youtube.com/embed/OVlnER8SxfQ'; 
         $project->user_id = $user->id;
         $project->save();
 
@@ -199,7 +199,7 @@ class ProjectsTableSeeder extends Seeder {
         $project->funds_current = 3500;
         $project->funds_end_date = '2015-01-02';
         $project->stage = "pre-production";
-        $project->video_url ='https://www.youtube.com/watch?v=bOL1R_W50bo'; 
+        $project->video_url ='http://www.youtube.com/embed/kL5c2szf3E4'; 
         $project->user_id = $user->id;
         $project->save();
 	}
