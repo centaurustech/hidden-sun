@@ -12,6 +12,10 @@
 				<td>{{ Auth::user()->first_name}} {{ Auth::user()->last_name }}</td>
 			</tr>
 			<tr>
+				<td>Email</td>
+				<td>{{ Auth::user()->email }}</td>
+			</tr>
+			<tr>
 				<td>Phone Number</td>
 				<td>{{ Auth::user()->phone_number }}</td>
 			</tr>

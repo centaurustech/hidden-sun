@@ -17,7 +17,9 @@ class HomeController extends BaseController {
 
 	public function showHomepage()
 	{
-		return View::make('index');
+		// get some random project to display on the homepage
+		$random_project = Project::random(1)->get();
+		return View::make('index')->with('random_project', $random_project);
 	}
 	
 	public function showLogin()

@@ -1,13 +1,42 @@
 @extends('layouts.master')
 @section('content')
-
-<div class="col-md-4">
-	<p>Here is some content that is in the narrower column on the left. We'll see what this turns out to look like. There is not official front end at this point in time.</p>
+<!-- BIG HEADER WITH PICTURE -->
+<div class="container-fluid">
+	<div class="row">
+		<div class="header">
+			<div id="header-copy">
+				<h1 style="font-size:4em;">Fund your independent film.</h1>
+				<p> ... </p>
+				<p><a class="btn btn-success btn-lg" href="#howitworks" role="button">How it Works</a></p>
+			</div>
+		</div>
+	</div>
 </div>
-<div class="col-md-8">
-	<h1>Welcome to Film Seeder: San Antonio</h1>
-	<h3>The name is not official.</h3>
-	<p>We are still bouncing around a few names for this site. At our organization we would prefer to avoid trademark infringements and all ensuing litigation. Not for public release.</p>
-	<p>This is the bigger column on the right.</p>
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-lg-1">
+			<div id="featured-project">
+			<h2>Featured Project</h2>
+			<hr>
+			@foreach ($random_project as $project)
+				<h3>{{ $project->project_title }}</h3>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-8">
+							<div class="embed-responsive embed-responsive-16by9">
+								<iframe class="embed-responsive-item" src="{{ $project->video_url }}"></iframe>
+							</div>
+						</div>
+
+						<div class="col-md-4">
+							<h3>stuff to the right</h3>
+						</div>
+					</div>
+				</div>
+		  	@endforeach
+		  </div>
+	 	</div>
+	</div>
 </div>
 @stop
