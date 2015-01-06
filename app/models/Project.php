@@ -46,6 +46,11 @@ class Project extends BaseModel {
 	// Don't forget to fill this array
 	protected $fillable = [];
 
+	public function scopeRandom($query, $size=1)
+	{
+		return $query->orderBy(DB::raw('RAND()'))->take($size);
+	}
+
 }
 
   

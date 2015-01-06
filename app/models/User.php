@@ -20,6 +20,15 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 		'phone_number'	=> 'max:25'
 	);
 
+	public static $rules_update_personal_info = array(
+		'first_name'	=> 'max:50',
+		'last_name'		=> 'max:50',
+		'city'			=> 'max:50',
+		'state'			=> 'max:25',
+		'email'			=> 'required|max:50|email',
+		'phone_number'	=> 'max:25'
+	);
+
 	protected $fillable = array('first_name', 'last_name', 'city', 'state', 'email', 'password', 'password_temp', 'activation_code', 'active', 'phone_number');
 
 	/**

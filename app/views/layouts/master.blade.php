@@ -3,8 +3,8 @@
 	@include('partials.header')
 <body>
 	@include('partials.nav')
-	<div class="row" id="primary-row">
-		<div class="container" id="primary-container">
+	<div class="container-fluid" id="primary-container">
+		<div class="row" id="primary-row">
 			<!-- Checks if variable global exists and outputs the value. -->
 			@if(Session::has('global'))
 				<div class="alert alert-success" role="alert">

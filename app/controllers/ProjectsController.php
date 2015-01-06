@@ -101,9 +101,10 @@ class ProjectsController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		$project = Project::find($id);
-
-		return View::make('projects.edit', compact('project'));
+		$this_project = Project::find($id);
+		$main_genres = Genre::where('parent_genre', '=', '1')->get();
+		$secondary_genres = Genre::all();
+		return View::make('projects.edit')->with(array('this_project' => $this_project, 'main_genres' => $main_genres, 'secondary_genres' => $secondary_genres));
 	}
 
 	/**
@@ -141,6 +142,8 @@ class ProjectsController extends \BaseController {
 		return Redirect::route('projects.index');
 	}
 
+
+
 	public function showFunded(){
 
 
@@ -151,6 +154,24 @@ class ProjectsController extends \BaseController {
 
 	}
 
+	public function showMyProjects() {
+		$user = Auth::user();
+		//put various sorting options here
+		if(Input::has('sort')){
+			$sort_type = Input::get('sort');
 
+			if($sort_type == 'funded'){
+				$projects = $user->projects()->where('funds_current', '>=', 'funds_goal')->get();	
+			}
+		} else {
+			$projects = $user->projects()->get();
+		}
+		return View::make('projects.self')->with(array('user' => $user, 'projects' => $projects));
+	}
+
+	public function showContribute($id) {
+		$project = Project::findOrFail($id);
+		return View::make('projects.fund')->with('project', $project);
+	}
 
 }
