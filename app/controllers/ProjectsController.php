@@ -8,11 +8,29 @@ class ProjectsController extends \BaseController {
 	 */
 	public function index()
 	{
-		if(Input::has('genre')) {
+		$query = Project::with('user');
+		$search = Input::get('search');
+
+		if(!is_null($search)) {
+			$query->where('project_title', 'like', '%' . $search . '%')->orWhere('synopsis', 'like', '%' . $search . '%');
+			$projects = $query->orderBy('created_at', 'desc')->paginate(10);
+		} elseif(Input::has('genre')) {
 			$genre_id = Input::get('genre');
 			$projects = Genre::find($genre_id)->projects;
 		} else {
 			$projects = Project::has('genres')->paginate(10);
+		}
+		/*
+		$currently_funded = (integer) $project->funds_current;
+		$funding_goal = (integer) $project->funds_goal;
+		$funding_progress = ($currently_funded / $funding_goal) * 100;
+		*/
+
+		foreach($projects as $project){
+			$currently_funded = (integer) $project->funds_current;
+			$funding_goal = (integer) $project->funds_goal;
+			$funding_progress = ($currently_funded / $funding_goal) * 100;
+			$project['funding_progress'] = $funding_progress;
 		}
 		
 		$genres = Genre::where('parent_genre', '=', '1')->get();

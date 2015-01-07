@@ -28,6 +28,7 @@ class Project extends BaseModel {
 		'funds_goal'		=> 'required',
 		'stage'				=> 'required',
 		'video_url'			=> '',
+		'thumbnail_url'		=> '',
 		'user_id'			=> 'required'
 		];
 
@@ -49,6 +50,11 @@ class Project extends BaseModel {
 	public function scopeRandom($query, $size=1)
 	{
 		return $query->orderBy(DB::raw('RAND()'))->take($size);
+	}
+
+	public function scopePopular($query)
+	{
+		return null;
 	}
 
 }

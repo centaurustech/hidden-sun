@@ -24,6 +24,7 @@ class CreateProjectsTable extends Migration {
 			$table->decimal('funds_goal', 11, 2);
 			$table->enum('stage', array('pre-production', 'in-production', 'post-production'));
 			$table->string('video_url');
+			$table->string('thumbnail_url');
 			$table->integer('user_id')->unsigned();
 			$table->foreign('user_id')->references('id')->on('users');
 			$table->timestamps();

@@ -37,12 +37,6 @@ Route::group(array('before' => 'auth'), function() {
 		'uses' => 'AccountController@getSignout'
 	));
 
-	/*
-	//  *************************
-	// 	Working with projects 
-	//  *************************
-	*/
-
 		// Manage projects/My Projects page (GET)
 		Route::get('/projects/my-projects', array(
 			'as' => 'manage-projects',

@@ -11,32 +11,24 @@
 			</div>
 		</div>
 	</div>
-</div>
-
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-lg-1">
-			<div id="featured-project">
-			<h2>Featured Project</h2>
+	<div class="row" id="featured-project">
+		<div class="row">
+			<h2><small>Featured Project</small></h2>
 			<hr>
-			@foreach ($random_project as $project)
+		</div>
+		@foreach ($random_project as $project)
+		<div class="row">
+			<div class="col-md-8">
 				<h3>{{ $project->project_title }}</h3>
-				<div class="container-fluid">
-					<div class="row">
-						<div class="col-md-8">
-							<div class="embed-responsive embed-responsive-16by9">
-								<iframe class="embed-responsive-item" src="{{ $project->video_url }}"></iframe>
-							</div>
-						</div>
-
-						<div class="col-md-4">
-							<h3>stuff to the right</h3>
-						</div>
-					</div>
+				<div class="embed-responsive embed-responsive-16by9">
+					<iframe class="embed-responsive-item" src="{{ $project->video_url }}"></iframe>
 				</div>
-		  	@endforeach
-		  </div>
-	 	</div>
+			</div>
+			<div class="col-md-4">
+				<h4>Some stuf on the side!</h4>
+			</div>
+		</div>	
+		@endforeach
 	</div>
 </div>
 @stop
