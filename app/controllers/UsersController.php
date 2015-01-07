@@ -34,7 +34,7 @@ class UsersController extends Controller {
 	 */
 	public function store()
 	{
-		$validator = Validator::make(Input::all(), User::$rules);
+		$validator = Validator::make(Input::all(), User::$rules_signup);
 
 		if ($validator->fails()) {
 			return Redirect::back()->withInput()->withErrors($validator);
@@ -48,8 +48,6 @@ class UsersController extends Controller {
 
 			$newUser->first_name = $allInput['first_name'];
 			$newUser->last_name  = $allInput['last_name'];
-			$newUser->city       = $allInput['city'];
-			$newUser->state      = $allInput['state'];
 			$newUser->email      = $allInput['email'];
 			$newUser->password   = $allInput['password'];
 
