@@ -5,9 +5,8 @@
 		<h2><center>{{ $project->project_title }}</center></h2>
 		<h4><center>{{ $project->stage }}</center></h4>
 	</div>
-
 	<div class="progress">
-	<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+	<div class="progress-bar" role="progressbar" aria-valuenow="{{ $funding_progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $funding_progress }}%;">
     	<span class="sr-only">60% Complete</span>
  	</div>
  	</div>
