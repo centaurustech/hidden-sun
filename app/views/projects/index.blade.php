@@ -1,6 +1,15 @@
 @extends('layouts.master')
 @section('content')
 <div class="col-md-2">
+<form id="browse-search-box" class="" method="get">
+        <div id="browse-search">
+                <div class="browse-search-container">
+                	<input class="browse-search" id="searchInput" type="text" placeholder="Search for...">
+                		<button type="button">Go</button>
+    			</div>
+        </div>
+</form>
+
 	<table>
 		<tr>
 			<th>Browse by Genre</th>

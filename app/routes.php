@@ -121,6 +121,12 @@ Route::group(array('before' => 'guest'), function(){
 		'as' => 'account-activate',
 		'uses' => 'AccountController@getActivate'
 	));
+	
+	// Show Funding payment form
+	Route::get('/projects/fund', array(
+		'as' => 'projects-fund',
+		'uses' => 'ProjectsController@showFunded'
+	));
 });
 
 Route::resource('projects', 'ProjectsController');

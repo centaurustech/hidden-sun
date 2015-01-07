@@ -17,7 +17,7 @@
             @if(Auth::check())
                 <li><a href="{{ URL::route('projects-create') }}">Create Project</a></li>
             @else
-                <li><a href="{{ URL::route('home') }}"></a>Fund a Project</li>
+                <li><a href="{{ URL::route('home') }}">Fund a Project</a></li>
             @endif
             <li><a href="#">Scout Locations</a></li>
         </ul>  
