@@ -10,7 +10,7 @@
             <div class="panel-body" >
                 <form id="signupform" class="form-horizontal" action="{{ URL::route('account-create-post') }}" method="post" role="form">
                     <div id="signupalert" style="display:none" class="alert alert-danger">
-                        <p>{{ $errors }}</p>
+                        <p>...</p>
                         <span></span>
                     </div>
                     <div class="form-group">
