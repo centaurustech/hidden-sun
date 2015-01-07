@@ -1,6 +1,18 @@
+body{
+	margin-top: 80px;
+}
+
+.centered {
+	margin: 0px auto;
+}
+
+#primary-container {
+	padding-top: 0px;
+	margin-top: -40px;
+}
 #primary-row {
-	margin-top: 120px;
-	margin-bottom: 40px;
+	padding-top: 0px;
+	margin-top: 0px;
 }
 
 #footer-row {
@@ -15,6 +27,52 @@
 	padding: 0px;
 	margin: 0px;
 }
+<<<<<<< HEAD
 body{
   margin-top: 50px;
+=======
+
+.form-outline {
+	border:1px solid;
+	margin:0 auto; 
+	padding:25px; 
+	max-width:600px;
+>>>>>>> master
+}
+
+.header {
+	margin-top: 0px;
+	position: relative;
+	top: 0px;
+	height: 600px;
+	width: 100%;
+	background-image: url("../img/balloon.jpg");
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+}
+
+#header-copy {
+	position: relative;
+	top: 35%;
+	left: 10px;
+	height:200px;
+	width: 800px;
+	margin: auto;
+	color: black;
+}
+
+#featured-project {
+	background-color: white;
+	padding: 20px;
+	position: relative;
+	height: 400px;
+	max-width: 800px;
+	margin: auto;
+	margin-bottom: 100px;
+}
+
+.navbar {
+	background: #FFF;
+	background:rgba(255,255,255,0.9);
+	border: 0px;
 }

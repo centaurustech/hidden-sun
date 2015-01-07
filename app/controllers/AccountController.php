@@ -138,15 +138,72 @@ class AccountController extends BaseController {
 		return Redirect::route('account-change-password')->with('global', 'Your password could not be changed.');
 	}
 
+	public function getForgotPassword(){
+		return View::make('account.forgot');
+	}
+
+	public function postForgotPassword() {
+		$validator = Validator::make(Input::get('email'), array(
+			'email' => 'required|email'
+		));
+
+		if($validator->fails()) {
+			return Redirect::route('account-forgot-password')->withErrors($validator)->withInput();
+		} else {
+			$user = User::where('email', '=', Input::get('email'));
+
+			if($user->count()) {
+				$user = $user->first();
+
+				$code = str_random(60);
+				$password = str_random(10);
+
+				$user->code = $code;
+				$user->password_temp = Hash::make($password);
+
+				if($user->save()) {
+					Mail::send('emails.auth.forgot', array(
+						'link' => URL::route('account-recover', $code), 
+						'email' => $user->email, 
+						'password' => $password, 
+						function($message) use ($user) {
+							$message->to($user->email, $user->email)->subject('Your new password');
+						}));
+
+					return Redirect::route('home')->with('global', 'We have sent you a new password by email.');
+				}
+			}
+		}
+		return Redirect::route('account-forgot-password')->with('global', 'Could not request new password.');
+	}
+
+	public function getRecover($code) {
+		$user = User::where('code', '=', $code)->where('password_temp', '!=', '');
+
+		if($user->count()){
+			$user = $user->first();
+
+			$user->password = $user->password_temp;
+			$user->password_temp = '';
+			$user->code = '';
+
+			if($user->save()){
+				return Redirect::route('home')->with('global', 'Your account has been recovered and you can sign in with your new password');
+			}
+		}
+		return Redirect::route('home')->with('global', 'Could not recover your account');
+	}
+
 	// Method to update personal account information
 	public function updatePersonalInformation($id){
 		$user_to_update = User::findOrFail($id);
 
-		$validator = Validator::make($data = Input::all(), User::$rules);
+		$validator = Validator::make($data = Input::all(), User::$rules_update_personal_info);
 
 		if ($validator->fails()) {
 			return Redirect::back()->withInput()->withErrors($validator);
-		} else {
+		} 
+		else {
 
 			$user_to_update->first_name = Input::get('first_name');
 			$user_to_update->last_name = Input::get('last_name');
@@ -158,8 +215,7 @@ class AccountController extends BaseController {
 
 			return Redirect::route('manage-account');
 		}
-
-		return Redirect::route('manage-account');
+		//return Redirect::route('manage-account');
 	}
 
 	public function showManageAccount() {

@@ -10,8 +10,8 @@ class GenreProjectTableSeeder extends Seeder {
 		foreach(range(1, 15) as $index)
 		{
             DB::table('genre_project')->insert(array(
-            array('genre_id' => rand(23, 43), 'project_id' => rand(33,47)),
-            ));
+            array('genre_id' => rand(1,21), 'project_id' => rand(1,15)),  
+        ));
 		}
 	}
 
