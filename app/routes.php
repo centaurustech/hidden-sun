@@ -148,14 +148,6 @@ Route::group(array('before' => 'guest'), function(){
 		'as' => 'account-activate',
 		'uses' => 'AccountController@getActivate'
 	));
-<<<<<<< HEAD
-	
-	// Show Funding payment form
-	Route::get('/projects/fund', array(
-		'as' => 'projects-fund',
-		'uses' => 'ProjectsController@showFunded'
-	));
-=======
 
 	// payment/stripe routes (GET)
 	Route::get('/projects/contribute/{id}', array(
@@ -194,8 +186,6 @@ Route::group(array('before' => 'guest'), function(){
 		// Stripe charge was successfull, continue by redirecting to a page with a thank you message
 		return Redirect::to('pay/success');
 	});
-
->>>>>>> master
 });
 
 Route::resource('projects', 'ProjectsController');
