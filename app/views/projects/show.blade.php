@@ -44,7 +44,11 @@
 					<td>{{ $project->funds_end_date }}</td>
 				</tr>
 			</table>
-			<p><a href="{{ URL::route('project-contribute', $project->id) }}">Contribute to {{ $project->project_title }}</a></p>
+			<a href="{{ $project->id }}">
+				<button type="button" class="btn btn-success">
+					Contribute to {{ $project->project_title }}
+				</button>
+			</a>
 		</div>
 	</div>
 

@@ -13,15 +13,13 @@
     </div>
     <div class="collapse navbar-collapse" id="navbar-collapse-1" style="padding-left:20px;">
         <ul class="nav navbar-nav navbar-left" style="margin-left:40px; margin-top: 5px;">
+            <li><a style="color:#FF7043;" href="#about">About Us</a></li>
             <li><a style="color:#7E57C2;" href="{{ URL::route('projects-discover') }}">Discover</a></li>
             <li><a style="color:#66BB6A;" href="{{ URL::route('projects-create') }}">Get Funding</a></li>
-            <li><a style="color:#FF7043;" href="#">Scout Locations</a></li>
         </ul>  
-
-
     	   @if(Auth::check())
            <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right" style="margin-left:50px;margin-right:0px;margin-top: 5px;">
                 <li id="account-dropdown" class="dropdown">
                     <a id="drop1" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
                         {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
@@ -32,7 +30,7 @@
                             <li role="presentation"><a href="{{ URL::route('manage-projects') }}" role="menuitem" tabindex="-1">My Projects</a></li>
                         </ul>
                 </li>
-                <li><a style="color:#66BB6A;" href="{{ URL::route('account-sign-out') }}">Sign Out</a></li>
+                <li><a style="color:black;" href="{{ URL::route('account-sign-out') }}">Sign Out</a></li>
             </ul>
         	@else
                 <ul class="nav navbar-nav navbar-right" style="margin-right:20px; margin-top: 5px;">
