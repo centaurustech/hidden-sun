@@ -20,16 +20,11 @@ class ProjectsController extends \BaseController {
 		} else {
 			$projects = Project::has('genres')->paginate(10);
 		}
-		/*
-		$currently_funded = (integer) $project->funds_current;
-		$funding_goal = (integer) $project->funds_goal;
-		$funding_progress = ($currently_funded / $funding_goal) * 100;
-		*/
 
 		foreach($projects as $project){
 			$currently_funded = (integer) $project->funds_current;
 			$funding_goal = (integer) $project->funds_goal;
-			$funding_progress = ($currently_funded / $funding_goal) * 100;
+			$funding_progress = round(($currently_funded / $funding_goal) * 100);
 			$project['funding_progress'] = $funding_progress;
 		}
 		
