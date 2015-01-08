@@ -18,16 +18,27 @@
             <li><a style="color:#FF7043;" href="#">Scout Locations</a></li>
         </ul>  
 
-        <ul class="nav navbar-nav navbar-right" style="margin-right:20px; margin-top: 5px;">
+
     	   @if(Auth::check())
-                <li>Hello, {{ Auth::user()->first_name }}</li>
-        		<li><a style="color:#66BB6A;" href="{{ URL::route('account-sign-out') }}">Sign Out</a></li>
-                <li><a href="{{ URL::route('manage-account') }}">Manage Account</a></li>
-                <li><a href="{{ URL::route('manage-projects') }}">My Projects</a></li>
+           <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+            <ul class="nav navbar-nav navbar-right">
+                <li id="account-dropdown" class="dropdown">
+                    <a id="drop1" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                        {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
+                        <span class="caret"></span>
+                    </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li role="presentation"><a href="{{ URL::route('manage-account') }}" role="menuitem" tabindex="-1">Manage Account</a></li>
+                            <li role="presentation"><a href="{{ URL::route('manage-projects') }}" role="menuitem" tabindex="-1">My Projects</a></li>
+                        </ul>
+                </li>
+                <li><a style="color:#66BB6A;" href="{{ URL::route('account-sign-out') }}">Sign Out</a></li>
+            </ul>
         	@else
-        		<li><a href="/account/create">Sign Up</a></li>
-        		<li><a href="{{ URL::route('account-sign-in') }}">Sign In</a></li>
+                <ul class="nav navbar-nav navbar-right" style="margin-right:20px; margin-top: 5px;">
+        		  <li><a href="/account/create">Sign Up</a></li>
+        		  <li><a href="{{ URL::route('account-sign-in') }}">Sign In</a></li>
+                </ul>
         	@endif
-        </ul>
     </div>
 </nav>

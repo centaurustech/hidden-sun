@@ -46,7 +46,7 @@ class AccountController extends BaseController {
 	}
 
 	public function postCreate() {
-		$validator = Validator::make(Input::all(), User::$rules);
+		$validator = Validator::make(Input::all(), User::$rules_signup);
 
 		if ($validator->fails()) {
 			return Redirect::back()->withInput()->withErrors($validator);
@@ -56,8 +56,6 @@ class AccountController extends BaseController {
 			$password = Input::get('password');
 			$first_name = Input::get('first_name');
 			$last_name = Input::get('last_name');
-			$city = Input::get('city');
-			$state = Input::get('state');
 
 			// Activation Code
 			$activation_code = str_random(60);
