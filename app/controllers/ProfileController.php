@@ -2,8 +2,8 @@
 
 class ProfileController extends BaseController {
 
-	public function user($email) {
-		$user = User::where('email', '=', $email);
+	public function user($id) {
+		$user = User::where('id', '=', $id);
 
 		if($user->count()){
 			$user = $user->first();
