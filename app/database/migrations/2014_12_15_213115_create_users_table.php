@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration {
 			$table->string('phone_number', 25)->nullable();
 			$table->string('city', 50);
 			$table->string('state', 25);
+			$table->string('recovery_email', 100)->nullable();
 			$table->string('activation_code', 60);
 			$table->integer('active');
 			$table->timestamps();

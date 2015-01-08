@@ -56,6 +56,7 @@ class Project extends BaseModel {
 	{
 		return null;
 	}
+	//getPercentFUndedAttribute;
 
 }
 

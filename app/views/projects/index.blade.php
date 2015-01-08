@@ -30,7 +30,7 @@
 			@foreach ($projects as $project)
 			<ul class="thumbnails list-unstyled">
 		        <li class="col-md-4" style="height: 550px; padding: 5px; margin-top:10px;margin-bottom:20px;">
-		          <div class="thumbnail" style="padding: 0">
+		          <div class="thumbnail" style="padding: 0;">
 		            <div style="padding:4px">
 		              <img alt="300x200" style="width: 100%" src="{{ $project->thumbnail_url }}">
 		            </div>
@@ -38,6 +38,11 @@
 		              <h2>{{ $project->project_title }}</h2>
 		              <p>{{ $project->synopsis }}</p>
 		              <p><i class="icon icon-map-marker"></i>{{ $project->genre_list }}</p>
+		              <a href="{{ $project->id }}">
+		              	<button type="button" class="btn btn-info">
+		              		View Project
+		              	</button>
+		              </a>
 		            </div>
 		            <div class="modal-footer" style="text-align: left">
 		              <div class="progress">
