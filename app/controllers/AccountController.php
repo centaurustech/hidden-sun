@@ -65,8 +65,6 @@ class AccountController extends BaseController {
 				'password' => Hash::make($password),
 				'first_name' => $first_name,
 				'last_name' => $last_name,
-				'city' => $city,
-				'state' => $state,
 				'activation_code' => $activation_code,
 				'active' => 0
 			));
