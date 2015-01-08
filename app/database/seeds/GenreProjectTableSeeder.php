@@ -14,4 +14,6 @@ class GenreProjectTableSeeder extends Seeder {
         ));
 		}
 	}
+
 }
+

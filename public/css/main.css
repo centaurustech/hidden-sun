@@ -28,6 +28,10 @@ body{
 	margin: 0px;
 }
 
+body{
+  margin-top: 50px;
+}
+
 .form-outline {
 	border:1px solid;
 	margin:0 auto; 
@@ -72,3 +76,4 @@ body{
 	border: 0px;
 	margin-bottom:0px;
 }
+

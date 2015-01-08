@@ -1,5 +1,4 @@
 <?php
-
 class ProjectsController extends \BaseController {
 
 	/**
@@ -90,8 +89,6 @@ class ProjectsController extends \BaseController {
 			return Redirect::action('ProjectsController@index');
 		}
 
-		Project::create($data);
-
 		return Redirect::route('projects.index');
 	}
 
@@ -161,11 +158,7 @@ class ProjectsController extends \BaseController {
 		return Redirect::route('projects.index');
 	}
 
-
-
 	public function showFunded(){
-
-
 	}
 
 	public function showNew() {

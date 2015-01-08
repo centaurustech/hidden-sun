@@ -52,4 +52,15 @@
             </div>                     
         </div>  
     </div>
+<<<<<<< HEAD
+    <div class="form-group">
+    	<label for="remember" class="col-sm-2 control-label">Remember Me </label>
+    	<input type ="checkbox" name="remember" id="remember">
+    </div>
+    {{ Form::submit('Sign In')}}
+    {{ Form::token() }}
+</form>
 @stop
+=======
+@stop
+>>>>>>> master

@@ -194,7 +194,6 @@ Route::group(array('before' => 'guest'), function(){
 		// Stripe charge was successfull, continue by redirecting to a page with a thank you message
 		return Redirect::to('pay/success');
 	});
-
 });
 
 Route::resource('projects', 'ProjectsController');
