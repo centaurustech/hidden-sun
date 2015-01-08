@@ -119,8 +119,6 @@ Route::group(array('before' => 'guest'), function(){
 		));
 	});
 
-
-
 	// Forgot Password (GET)
 	Route::get('/account/forgot-password', array(
 		'as' => 'account-forgot-password',

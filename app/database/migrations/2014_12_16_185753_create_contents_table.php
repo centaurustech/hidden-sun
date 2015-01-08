@@ -16,9 +16,10 @@ class CreateContentsTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('video_url');
-			$table->string('img_1_url');
-			$table->string('img_2_url');
-			$table->string('img_3_url');
+			$table->string('img0_url');
+			$table->string('img1_url');
+			$table->string('img2_url');
+			$table->string('img3_url');
 			$table->timestamps();
 		});
 	}
