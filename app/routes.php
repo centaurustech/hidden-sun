@@ -16,6 +16,11 @@ Route::get('/', array(
 	'uses' => 'HomeController@showHomepage'
 ));
 
+Route::get('/howitworks', array(
+	'as' => 'howto',
+	'uses' => 'HomeController@showInstructions'	
+));
+
 Route::get('projects/discover', array(
 	'as' => 'projects-discover',
 	'uses' => 'ProjectsController@index'
