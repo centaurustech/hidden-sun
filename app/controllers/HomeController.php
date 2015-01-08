@@ -57,5 +57,7 @@ class HomeController extends BaseController {
 		return View::make('howitworks');
 	}
 	
-	
+	public function showAdmin(){
+		return View::make('aboutus');
+	}
 }

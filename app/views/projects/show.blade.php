@@ -9,15 +9,15 @@
 	</div>
 </div>
 <hr>
-<div class="container progress">
-	<div class="row">
-		<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{ $funding_progress }}%;"></div>
- 	</div>
-</div>
 <div class="container">
 	<div class="row">
-		<span style="float:left;"><b>Current funding: </b>{{ $project->funds_current }}</span>
-		<span style="float:right;"><b>Goal: </b>{{ $project->funds_goal }}</span>
+		<div class="col-md-12">
+			<div class="progress">
+				<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:{{ $funding_progress }}%;"></div>
+			</div>
+			<span style="float:left;"><b>Current funding: </b>{{ $project->funds_current }}</span>
+			<span style="float:right;"><b>Goal: </b>{{ $project->funds_goal }}</span>
+		</div>
 	</div>
 </div>
 <hr>

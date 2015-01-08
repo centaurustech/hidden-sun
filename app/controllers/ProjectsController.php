@@ -1,6 +1,7 @@
 <?php
 
 class ProjectsController extends \BaseController {
+
 	/**
 	 * Display a listing of projects
 	 *
@@ -26,6 +27,11 @@ class ProjectsController extends \BaseController {
 			$funding_goal = (integer) $project->funds_goal;
 			$funding_progress = round(($currently_funded / $funding_goal) * 100);
 			$project['funding_progress'] = $funding_progress;
+			
+			$funding_ends = new Carbon($project->funds_end_date);
+			$now = Carbon::now();
+			$days_left = ($funding_ends->diff($now)->days < 1) ? 'today' : $funding_ends->diffForHumans($now);
+			$project['days_left'] = $days_left;
 		}
 		
 		$genres = Genre::where('parent_genre', '=', '1')->get();
@@ -98,10 +104,10 @@ class ProjectsController extends \BaseController {
 	public function show($id)
 	{
 		$project = Project::findOrFail($id);
-
+		
 		$currently_funded = (integer) $project->funds_current;
 		$funding_goal = (integer) $project->funds_goal;
-		$funding_progress = ($currently_funded / $funding_goal) * 100;
+		$funding_progress = round(($currently_funded / $funding_goal) * 100);
 
 		return View::make('projects.show')->with(array('project' => $project, 'funding_progress' => $funding_progress));
 	}
