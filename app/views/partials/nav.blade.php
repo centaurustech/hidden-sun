@@ -13,9 +13,10 @@
     </div>
     <div class="collapse navbar-collapse" id="navbar-collapse-1" style="padding-left:20px;">
         <ul class="nav navbar-nav navbar-left" style="margin-left:40px; margin-top: 5px;">
-            <li><a style="color:#FF7043;" href="{{ URL::route('about')}}">About Us</a></li>
+            <li><a style="color:#F00000" href="{{URL::route('howto')}}">How it Works</a></li>
             <li><a style="color:#7E57C2;" href="{{ URL::route('projects-discover') }}">Discover</a></li>
-            <li><a style="color:#66BB6A;" href="{{ URL::route('projects-create') }}">Get Funding</a></li>
+            <li><a style="color:#66BB6A;" href="{{ URL::route('projects-create') }}">Get Funded</a></li>
+            <li><a style="color:#FF7043;" href="{{ URL::route('about')}}">About Us</a></li>
         </ul>  
     	   @if(Auth::check())
            <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
