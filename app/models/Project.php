@@ -32,6 +32,8 @@ class Project extends BaseModel {
 		'user_id'			=> 'required'
 		];
 
+	// Database relationships
+
 	protected $table = 'projects';
 
 	public function user()
@@ -42,6 +44,11 @@ class Project extends BaseModel {
 	public function genres()
 	{
 		return $this->belongsToMany('Genre');
+	}
+
+	public function donations()
+	{
+		return $this->hasMany('Donation');
 	}
 
 	// Don't forget to fill this array
