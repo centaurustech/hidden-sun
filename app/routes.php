@@ -43,6 +43,13 @@ Route::group(array('before' => 'auth'), function() {
 			'uses' => 'ProjectsController@showMyProjects'
 		));
 
+	//Manage profile page
+	Route::get('user/profile', array(
+		'as' => 'profile', 
+		'uses' => 'ProfileController@showProfile'
+	));
+
+
 	// Account settings page (GET)
 	Route::get('/account/settings', array(
 		'as' => 'manage-account',

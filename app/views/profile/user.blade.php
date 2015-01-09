@@ -1,51 +1,45 @@
 @extends('layouts.master')
 @section('content')
 
-	<h1>{{ $user->first_name }} {{ $user->last_name }}</h1>
-	<p> Welcome to your profile, {{ $user->first_name }}!</p>
-	<p>
+<link rel="stylesheet" type="text/css" href="/css/userprofile.css">
 
-	<div class="container">
-    <div class="span3 well">
-        <center>
-        <a href="#aboutModal" data-toggle="modal" data-target="#myModal"><img src="" name="aboutme" width="140" height="140" class="img-circle"></a>
-        <h3>Drew Z</h3>
-        <em>click my picture for more</em>
-		</center>
-    </div>
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h4 class="modal-title" id="myModalLabel">More About Joe</h4>
-                    </div>
-                <div class="modal-body">
-                    <center>
-                    <img src="" name="aboutme" width="140" height="140" border="0" class="img-circle"></a>
-                    <h3 class="media-heading">Drew Z <small>USA</small></h3>
-                    <span><strong>Skills: </strong></span>
-                        <span class="label label-warning">The Stepfather</span>
-                        <span class="label label-info">Saving Coder Ryan</span>
-                        <span class="label label-info">Jurassic Shark</span>
-                        <span class="label label-success">Gone with the air</span>
-                    </center>
-                    <hr>
-                    <center>
-                    <p class="text-left"><strong>Bio: </strong><br>
-                        Great overall guy who likes to make movies and have fun</p>
-                    <br>
-                    </center>
-                </div>
-                <div class="modal-footer">
-                    <center>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Back to profile</button>
-                    </center>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+	    <div class="container">
+		<div class="row">
+			<div class="[ col-sm-6 col-md-offset-2 col-md-4 ]">
+				<div class="[ info-card ]">
+					<img style="width: 100%" src="/img/headshot.jpg" />
+					<div class="[ info-card-details ] animate">
+						<div class="[ info-card-header ]">
+							<h1> {{ $user->first_name }} </h1>
+							<h3> {{ $user->last_name }} </h3>
+						</div>
+						<div class="[ info-card-detail ]">
+							<!-- Description -->
+							<p> {{ $user->summary }} </p>
+
+							<div class="social">
+								<a href="https://www.facebook.com/" class="[ social-icon facebook ] animate"><span class="fa fa-facebook"></span></a>
+
+								<a href="https://twitter.com/?lang=en" class="[ social-icon twitter ] animate"><span class="fa fa-twitter"></span></a>
+							
+								<a href="https://www.linkedin.com/hp/?dnr=qomIWZz9yQ0eyrsvdo2tFZYtyZyGyYYg0Au3" class="[ social-icon linkedin ] animate"><span class="fa fa-linkedin"></span></a>
+
+								<a href="https://github.com/" class="[ social-icon github ] animate"><span class="fa fa-github-alt"></span></a>
+
+								<a href="https://plus.google.com/" class="[ social-icon google-plus ] animate"><span class="fa fa-google-plus"></span></a>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+    		
+    		<table>
+    			@foreach($projects as $project)
+    				<tr><td>{{ $project->project_title }}</td></tr>
+    				<tr><td>{{ $project->thumbnail_url }}</td></tr>
+    				<tr><td>{{ $project->synopsis }}</td></tr>
+    			@endforeach
+    		</table>
 
 @stop
