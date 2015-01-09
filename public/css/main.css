@@ -2,6 +2,19 @@ body{
 	margin-top: 80px;
 }
 
+.jumbotron{
+	text-align: center;
+	border-bottom: 1px solid #e5e5e5;
+}
+
+.row-centered{
+	text-align: center;
+}
+
+.col-centered{
+	text-align: left;
+}
+
 .centered {
 	margin: 0px auto;
 }
@@ -26,6 +39,11 @@ body{
 #footer-container {
 	padding: 0px;
 	margin: 0px;
+}
+
+
+body{
+  margin-top: 50px;
 }
 
 .form-outline {
@@ -72,3 +90,4 @@ body{
 	border: 0px;
 	margin-bottom:0px;
 }
+

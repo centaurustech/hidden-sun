@@ -52,8 +52,8 @@
 		              </div>
 		              <div class="row">
 		                <div class="col-md-4"><b>{{ $project->funding_progress }}%</b><br/><small>FUNDED</small></div>
-		                <div class="col-md-4"><b>{{ $project->funds_current }}</b><br/><small>PLEDGED</small></div>
-		                <div class="col-md-4"><b>18</b><br/><small>DAYS</small></div>
+		                <div class="col-md-4"><b>{{ $project->currently_funded_with_donations }}</b><br/><small>PLEDGED</small></div>
+		                <div class="col-md-4"><b>{{ $project->days_left }}</b><br/><small>DAYS</small></div>
 		              </div>
 		            </div>
 		          </div>
@@ -67,26 +67,3 @@
 	</div>
 </div>
 @stop
-<!--
-<table class="table table-bordered" id="projects-table">
-	@foreach ($projects as $project)
-		<tr>
-			<td>
-				<img src="{{ $project->thumbnail_url }}">
-			</td>
-			<td>
-				<table>
-					<tr><td><b>Title: </b>{{ $project->project_title }}</td></tr>
-					<tr><td><b>Genre: </b>
-						{{{ $project->genre_list }}}
-					</td></tr>
-					<tr><td><b>Goal: </b>{{ $project->funds_goal }}</td></tr>
-					<tr><td><b>Currently Funded: </b>{{ $project->funds_current }}</td></tr>
-					<tr><td><b>Funding Ends: </b>{{ $project->funds_end_date }}</td></tr>
-					<tr><td><a href="{{ $project->id }}">See Project</a></td></tr>
-				</table>
-			</td>
-		</tr>
-	@endforeach
-</table>
--->

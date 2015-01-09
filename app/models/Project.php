@@ -67,4 +67,3 @@ class Project extends BaseModel {
 
 }
 
-  

@@ -6,8 +6,8 @@
 		<div class="header">
 			<div id="header-copy">
 				<h1 style="font-size:4em;">Fund your independent film.</h1>
-				<p> ... </p>
-				<p><a class="btn btn-success btn-lg" href="#howitworks" role="button">How it Works</a></p>
+				<p></p>
+				<p><a class="btn btn-success btn-lg" href="{{ URL::route('howto') }}" role="button">How it Works</a></p>
 			</div>
 		</div>
 	</div>
@@ -25,7 +25,7 @@
 				</div>
 			</div>
 			<div class="col-md-4">
-				<h4>Some stuf on the side!</h4>
+				<h4>have information about the project.</h4>
 			</div>
 		</div>	
 		@endforeach
