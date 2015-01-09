@@ -15,7 +15,7 @@
 			<div class="progress">
 				<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:{{ $funding_progress }}%;"></div>
 			</div>
-			<span style="float:left;"><b>Current funding: </b>{{ $project->funds_current }}</span>
+			<span style="float:left;"><b>Current funding: </b>{{ $currently_funded }}</span>
 			<span style="float:right;"><b>Goal: </b>{{ $project->funds_goal }}</span>
 		</div>
 	</div>

@@ -34,10 +34,20 @@ class ProjectsController extends \BaseController {
 		}
 
 		foreach($projects as $project){
+			$donations = Project::find($project->id)->donations()->get();
+
+			$donation_total = 0;
+
+			foreach($donations as $donation){
+				$donation_total += (integer)$donation->amount;
+			}
+
 			$currently_funded = (integer) $project->funds_current;
+			$currently_funded_with_donations = $currently_funded + ($donation_total / 100);
 			$funding_goal = (integer) $project->funds_goal;
 			$funding_progress = round(($currently_funded / $funding_goal) * 100);
 			$project['funding_progress'] = $funding_progress;
+			$project['currently_funded_with_donations'] = $currently_funded_with_donations;
 			
 			$funding_ends = new Carbon($project->funds_end_date);
 			$now = Carbon::now();
@@ -125,7 +135,7 @@ class ProjectsController extends \BaseController {
 		$funding_goal = (integer) $project->funds_goal;
 		$funding_progress = round(($currently_funded / $funding_goal) * 100);
 
-		return View::make('projects.show')->with(array('project' => $project, 'funding_progress' => $funding_progress));
+		return View::make('projects.show')->with(array('project' => $project, 'funding_progress' => $funding_progress, 'currently_funded' => $currently_funded));
 	}
 
 	/**

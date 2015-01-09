@@ -52,8 +52,8 @@
 		              </div>
 		              <div class="row">
 		                <div class="col-md-4"><b>{{ $project->funding_progress }}%</b><br/><small>FUNDED</small></div>
-		                <div class="col-md-4"><b>{{ $project->funds_current }}</b><br/><small>PLEDGED</small></div>
-		                <div class="col-md-4"><b>18</b><br/><small>DAYS</small></div>
+		                <div class="col-md-4"><b>{{ $project->currently_funded_with_donations }}</b><br/><small>PLEDGED</small></div>
+		                <div class="col-md-4"><b>{{ $project->days_left }}</b><br/><small>DAYS</small></div>
 		              </div>
 		            </div>
 		          </div>
