@@ -1,6 +1,13 @@
 <?php
 
 class ProjectsController extends \BaseController {
+
+	public function showDonationTotal($id) {
+		$donations = Project::find($id)->donations();
+		dd($donations);
+		$donation_total = null; //something
+		return View::make('show-donations-total')->with(array('project' => $project, 'donation_total' => $donation_total));
+	}
 	/**
 	 * Display a listing of projects
 	 *
@@ -101,7 +108,7 @@ class ProjectsController extends \BaseController {
 
 		$currently_funded = (integer) $project->funds_current;
 		$funding_goal = (integer) $project->funds_goal;
-		$funding_progress = ($currently_funded / $funding_goal) * 100;
+		$funding_progress = round(($currently_funded / $funding_goal) * 100);
 
 		return View::make('projects.show')->with(array('project' => $project, 'funding_progress' => $funding_progress));
 	}
@@ -185,6 +192,10 @@ class ProjectsController extends \BaseController {
 	public function showContribute($id) {
 		$project = Project::findOrFail($id);
 		return View::make('projects.fund')->with('project', $project);
+	}
+
+	public function doDonation($id) {
+		return View::make('projects.fund');
 	}
 
 }

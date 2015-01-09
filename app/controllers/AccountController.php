@@ -211,7 +211,6 @@ class AccountController extends BaseController {
 
 			return Redirect::route('manage-account');
 		}
-		//return Redirect::route('manage-account');
 	}
 
 	public function showManageAccount() {
