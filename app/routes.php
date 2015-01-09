@@ -11,6 +11,11 @@
 |
 */
 
+Route::get('/donation-total/{id}', array(
+	'as' => 'donation-total',
+	'uses' => 'ProjectsController@showDonationTotal'
+));
+
 Route::get('/', array(
 	'as' => 'home',
 	'uses' => 'HomeController@showHomepage'
@@ -27,6 +32,35 @@ Route::get('/user/{user_id}', array(
 	'as' => 'profile-user',
 	'uses' => 'ProfileController@user'
 ));
+//make the stripe payment page
+Route::post('/projects/donate/{id}', array(
+	'as' => 'donation-create',
+	'uses' => 'DonationsController@create'
+));
+
+// Payment-stripe routes (POST)
+Route::post('/donate', array(
+	'as' => 'donate',
+	'uses' => 'DonationsController@donate'
+));
+
+Route::post('dummy-donate', function() {
+	$amount = Input::get('amount');
+	$stripe_charge_id = str_random(60);
+	$project_id = Input::get('project_id');
+
+	if($success = true){
+		$donation = new Donation();
+
+		$donation->amount 			= $amount;
+		$donation->stripe_charge_id = $stripe_charge_id;
+		$donation->project_id 		= $project_id;
+
+		$donation->save();
+
+		return Redirect::route('home');
+	}
+});
 
 // Routes for authenticated users
 Route::group(array('before' => 'auth'), function() {
@@ -124,6 +158,12 @@ Route::group(array('before' => 'guest'), function(){
 			'as' => 'account-forgot-password-post',
 			'uses' => 'AccountController@postForgotPassword'
 		));
+
+		// Make Donation (POST)
+		Route::post('projects/contribute/{id}', array(
+			'as' => 'project-contribute-post',
+			'uses' => 'ProjectsController@doDonation'
+		));
 	});
 
 	// Forgot Password (GET)
@@ -153,45 +193,6 @@ Route::group(array('before' => 'guest'), function(){
 		'as' => 'account-activate',
 		'uses' => 'AccountController@getActivate'
 	));
-
-	// payment/stripe routes (GET)
-	Route::get('/projects/contribute/{id}', array(
-		'as' => 'project-contribute',
-		'uses' => 'ProjectsController@showContribute'
-	));
-
-	// Payment-stripe routes (POST)
-	Route::post('pay', function(){
-		// Use the config for the stripe secret key
-		Stripe::setApiKey(Config::get('stripe.stripe.secret'));
-
-		// Get the credit card details submitted by the form
-		$token = Input::get('stripeToken');
-		$amount = Input::get('amount');
-		$amount = (integer) $amount * 100;
-
-		// Create the charge on Stripe's servers - this will charge the user's card
-		try {
-		    $charge = Stripe_Charge::create(array(
-		      "amount" => $amount, // amount in cents
-		      "currency" => "usd",
-		      "card"  => $token,
-		      "description" => 'Charge for my product')
-		    );
-
-		} catch(Stripe_CardError $e) {
-		    $e_json = $e->getJsonBody();
-		    $error = $e_json['error'];
-		    // The card has been declined
-		    // redirect back to checkout page
-		    return Redirect::to('pay')
-		        ->withInput()->with('stripe_errors',$error['message']);
-		}
-		// Maybe add an entry to your DB that the charge was successful, or at least Log the charge or errors
-		// Stripe charge was successfull, continue by redirecting to a page with a thank you message
-		return Redirect::to('pay/success');
-	});
-
 });
 
 Route::resource('projects', 'ProjectsController');
