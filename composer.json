@@ -5,7 +5,10 @@
 	"license": "MIT",
 	"type": "project",
 	"require": {
-		"laravel/framework": "4.2.*"
+		"laravel/framework": "4.2.*",
+		"fzaninotto/faker": "1.5.*@dev",
+		"stripe/stripe-php": "~1.17",
+		"nesbot/Carbon": "*"
 	},
 	"autoload": {
 		"classmap": [
@@ -33,5 +36,8 @@
 	"config": {
 		"preferred-install": "dist"
 	},
-	"minimum-stability": "stable"
+	"minimum-stability": "stable",
+	"require-dev": {
+		"way/generators": "~2.0"
+	}
 }
