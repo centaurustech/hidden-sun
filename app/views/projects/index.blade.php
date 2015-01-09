@@ -1,17 +1,5 @@
 @extends('layouts.master')
 @section('content')
-<div class="col-md-2">
-<form id="browse-search-box" class="" method="get">
-        <div id="browse-search">
-                <div class="browse-search-container">
-                	<input class="browse-search" id="searchInput" type="text" placeholder="Search for...">
-                		<button type="button">Go</button>
-    			</div>
-        </div>
-</form>
-
-<table>
-
 <div class="container-fluid" style="margin-top:25px;margin-bottom:100px;">
 	<div class="row">
 		<div class="col-md-3">
@@ -65,7 +53,7 @@
 		              <div class="row">
 		                <div class="col-md-4"><b>{{ $project->funding_progress }}%</b><br/><small>FUNDED</small></div>
 		                <div class="col-md-4"><b>{{ $project->funds_current }}</b><br/><small>PLEDGED</small></div>
-		                <div class="col-md-4"><b>{{ $project->days_left }}</small></div>
+		                <div class="col-md-4"><b>18</b><br/><small>DAYS</small></div>
 		              </div>
 		            </div>
 		          </div>
