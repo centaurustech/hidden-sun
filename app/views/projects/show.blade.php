@@ -44,11 +44,22 @@
 					<td>{{ $project->funds_end_date }}</td>
 				</tr>
 			</table>
-			<a href="{{ $project->id }}">
-				<button type="button" class="btn btn-success">
-					Contribute to {{ $project->project_title }}
-				</button>
-			</a>
+			<hr>
+			<h3>Contribute to {{ $project->project_title }}</h3>
+			<form action="{{ URL::route('donation-create', $project->id) }}" method="post">
+				<input type="radio" name="donation_amount" value="5">5<br>
+				<input type="radio" name="donation_amount" value="25">25<br>
+				<input type="radio" name="donation_amount" value="50">50<br>
+				<input type="radio" name="donation_amount" value="100">100<br>
+				<input type="radio" name="donation_amount" value="custom">Custom
+				<input type="text" name="custom_amount"><br>
+	                @if($errors->has('donation_amount'))
+                    	{{ $errors->first('donation_amount') }}
+                	@endif
+					<button type="submit" class="btn btn-success" value="create_donation">
+						Payment Page
+					</button>
+			</form>
 		</div>
 	</div>
 
