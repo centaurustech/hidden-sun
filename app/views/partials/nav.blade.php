@@ -1,5 +1,6 @@
 <nav class="navbar navbar-default transparent navbar-fixed-top" role="navigation" style="font-family: 'Galindo', sans-serif; font-size: 16px; z-index: 100;">
   <div class="container">
+    <span style="position:absolute;left:0px;top:0px;font-size:12px;color:red;">[beta]</span>
     <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1">
             <span class="sr-only">Toggle navigation</span>
@@ -13,9 +14,9 @@
     </div>
     <div class="collapse navbar-collapse" id="navbar-collapse-1" style="padding-left:20px;">
         <ul class="nav navbar-nav navbar-left" style="margin-left:40px; margin-top: 5px;">
-            <li><a style="color:#FF7043;" href="#about">About Us</a></li>
+            <li><a style="color:#FF7043;" href="{{ URL::route( 'about' )}}">About Us</a></li>
             <li><a style="color:#7E57C2;" href="{{ URL::route('projects-discover') }}">Discover</a></li>
-            <li><a style="color:#66BB6A;" href="{{ URL::route('projects-create') }}">Get Funding</a></li>
+            <li><a style="color:#66BB6A;" href="{{ URL::route('projects-create') }}">Get Funded</a></li>
         </ul>  
     	   @if(Auth::check())
            <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>

@@ -5,7 +5,7 @@
         "This file is @generated automatically"
     ],
 
-    "hash": "077fa702058c7d0b200d3d9d5aa7ad8f",
+    "hash": "5c05ae42b960f41ca1453b118554b3b2",
 
     "packages": [
         {
@@ -1910,7 +1910,6 @@
             "time": "2014-05-27 14:21:26"
         }
     ],
-<<<<<<< HEAD
     "packages-dev": [
         {
             "name": "way/generators",
@@ -1959,7 +1958,6 @@
             "time": "2014-09-01 19:24:09"
         }
     ],
-
     "aliases": [
 
     ],

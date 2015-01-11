@@ -37,22 +37,18 @@ class HomeController extends BaseController {
 		*/
 		return View::make('auth.login');
 	}
-	/*
+	
 	public function showSignupPage()
 	{
 		return View::make('signup');
 	}
-	*/
-
-	public function home() {
-
-		Mail::send('emails.auth.newaccount', array('name' => 'Louis'), function($message) {
-			$message->to('louishawkins@gmail.com', 'Louis Hawkins')->subject('Test Email');
-		});
-
-		return View::make('index');
+	
+	
+	public function showInstructions(){
+		return View::make('howitworks');
 	}
 	
-	
-	
+	public function showAdmin(){
+		return View::make('aboutus');
+	}
 }

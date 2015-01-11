@@ -38,7 +38,7 @@ class AccountController extends BaseController {
 				return Redirect::route('account-sign-in')->with('global', 'Please check your email and password and try again. Have you activated your account?');
 			}
 		}
-		return Redirect::route('account-sign-in')->with('global', 'There was a problem signing into your account. Have you activated your account?');
+		return Redirect::route('account-sign-in')->with(array('global' => 'There was a problem signing into your account. Have you activated your account?'));
 	}
 
 	public function getCreate() {
@@ -92,7 +92,7 @@ class AccountController extends BaseController {
 			$user->activation_code 	= '';
 
 			if($user->save()) {
-				return Redirect::route('home')->with('global', 'You have successfully activated your account!');
+				return Redirect::route('home')->with('global','You have successfully activated your account!');
 			}
 		} else {
 			return Redirect::route('home')->with('global', 'Oops! Somehthing went wrong when activation your account. Please try again.');
@@ -123,15 +123,15 @@ class AccountController extends BaseController {
 				$user->password = Hash::make($new_password);
 
 				if($user->save()){
-					return Redirect::route('home')->with('global', 'Your password has been changed successfully!');
+					return Redirect::route('home')->with(array('global' => 'Your password has been changed successfully!', 'alert-type' => 'success'));
 				}
 			} else {
-				return Redirect::route('account-change-password')->with('global', 'Your old password is incorrect.');
+				return Redirect::route('account-change-password')->with(array('global' => 'Your old password is incorrect.', 'alert-type' => 'danger'));
 			}
 
 		}
 
-		return Redirect::route('account-change-password')->with('global', 'Your password could not be changed.');
+		return Redirect::route('account-change-password')->with(array('global' => 'Your password could not be changed.', 'alert-type' => 'danger'));
 	}
 
 	public function getForgotPassword(){
@@ -184,10 +184,10 @@ class AccountController extends BaseController {
 			$user->code = '';
 
 			if($user->save()){
-				return Redirect::route('home')->with('global', 'Your account has been recovered and you can sign in with your new password');
+				return Redirect::route('home')->with(array('global' => 'Your account has been recovered and you can sign in with your new password', 'alert-type' => 'success'));
 			}
 		}
-		return Redirect::route('home')->with('global', 'Could not recover your account');
+		return Redirect::route('home')->with(array('global' => 'Could not recover your account', 'alert-type' => 'danger'));
 	}
 
 	// Method to update personal account information
