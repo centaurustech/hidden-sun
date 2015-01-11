@@ -22,10 +22,10 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="progress">
-				<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:{{ $funding_progress }}%;"></div>
+				<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:{{ $project->funding_progress }}%;"></div>
 			</div>
-			<span style="float:left;"><b>Donation Total: </b>${{ $donation_total }}</span>
-			<span style="float:right;"><b>Goal: </b>{{ $project->funds_goal }}</span>
+			<span style="float:left;"><b>Donation Total: </b>${{ $project->donation_total }}</span>
+			<span style="float:right;"><b>Goal: </b>${{ $project->funding_goal }}</span>
 		</div>
 	</div>
 </div>
@@ -54,19 +54,19 @@
 				<div id="contribute-form" style="padding-left:20px;padding-right:20px;">	
 					<form action="{{ URL::route('donation-create', $project->id) }}" method="post">
 						<div class="radio">
-							<input type="radio" name="donation_amount" value="5">  5
+							<input type="radio" name="donation_amount" value="5">$5
 						</div>
 						<div class="radio">
-							<input type="radio" name="donation_amount" value="25">  25
+							<input type="radio" name="donation_amount" value="25">$25
 						</div>
 						<div class="radio">
-							<input type="radio" name="donation_amount" value="50">  50
+							<input type="radio" name="donation_amount" value="50">$50
 						</div>
 						<div class="radio">
-							<input type="radio" name="donation_amount" value="100">  100
+							<input type="radio" name="donation_amount" value="100">$100
 						</div>
 						<div class="radio">
-							<input type="radio" name="donation_amount" value="custom"> Custom
+							<input type="radio" name="donation_amount" value="custom">Custom
 							<input type="text" name="custom_amount">
 				                @if($errors->has('donation_amount'))
 			                    	{{ $errors->first('donation_amount') }}

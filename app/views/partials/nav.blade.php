@@ -1,5 +1,6 @@
 <nav class="navbar navbar-default transparent navbar-fixed-top" role="navigation" style="font-family: 'Galindo', sans-serif; font-size: 16px; z-index: 100;">
   <div class="container">
+    <span style="position:absolute;left:0px;top:0px;font-size:12px;color:red;">[beta]</span>
     <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1">
             <span class="sr-only">Toggle navigation</span>

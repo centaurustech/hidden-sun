@@ -16,5 +16,4 @@ class DatabaseSeeder extends Seeder {
 		 $this->call('GenresTableSeeder');
 		 $this->call('GenreProjectTableSeeder');
 	}
-
 }
