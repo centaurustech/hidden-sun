@@ -36,6 +36,11 @@ Route::get('projects/discover', array(
 	'uses' => 'ProjectsController@index'
 ));
 
+Route::get('projects/show/{id}', array(
+	'as' => 'project-show',
+	'uses' => 'ProjectsController@show'
+));
+
 Route::get('projects/unfunded', 'ProjectsController@showUnfunded');
 
 Route::get('/user/{user_id}', array(
@@ -53,24 +58,6 @@ Route::post('/donate', array(
 	'as' => 'donate',
 	'uses' => 'DonationsController@donate'
 ));
-
-Route::post('dummy-donate', function() {
-	$amount = Input::get('amount');
-	$stripe_charge_id = str_random(60);
-	$project_id = Input::get('project_id');
-
-	if($success = true){
-		$donation = new Donation();
-
-		$donation->amount 			= $amount;
-		$donation->stripe_charge_id = $stripe_charge_id;
-		$donation->project_id 		= $project_id;
-
-		$donation->save();
-
-		return Redirect::route('home');
-	}
-});
 
 // Routes for authenticated users
 Route::group(array('before' => 'auth'), function() {
@@ -106,7 +93,7 @@ Route::group(array('before' => 'auth'), function() {
 	));
 
 	// Create project (GET)
-	Route::get('projects/create', array(
+	Route::get('/projects/create', array(
 		'as' => 'projects-create',
 		'uses' => 'ProjectsController@create'
 	));
@@ -198,5 +185,5 @@ Route::group(array('before' => 'guest'), function(){
 	));
 });
 
-Route::resource('projects', 'ProjectsController');
+//Route::resource('projects', 'ProjectsController');
 

@@ -2,6 +2,45 @@
 
 class DonationsController extends \BaseController {
 
+	public function donate(){
+		//get project id
+		$project_id = Input::get('project_id');
+
+		// Use the config for the stripe secret key
+		Stripe::setApiKey(Config::get('stripe.stripe.secret'));
+		$amount = Input::get('amount');
+		$amount_in_dollars = $amount / 100;
+
+		// Get the credit card details submitted by the form
+		$token = Input::get('stripeToken');
+
+		// Create the charge on Stripe's servers - this will charge the user's card
+		try {
+			$charge = Stripe_Charge::create(array(
+				"amount" 		=> $amount, // amount in cents
+				"currency" 		=> "usd",
+				"card"  		=> $token,
+				"description" 	=> 'Film Seedr Donation')
+			);
+		} catch(Stripe_CardError $e) {
+			$e_json = $e->getJsonBody();
+			$error = $e_json['error'];
+			// The card has been declined
+			// redirect back to checkout page
+			return Redirect::to('donation-create')->withInput()->with(array('stripe_errors' => $error['message'], 'alert-type' => 'danger'));
+		}
+		// Enter the donation into the database. Donation totals are derived from this!
+		
+		$donation = new Donation();
+		$donation->amount = $amount;
+		$donation->stripe_charge_id = $charge->id;
+		$donation->project_id = $project_id;
+
+		$donation->save();
+
+		return Redirect::action('ProjectsController@show', array('id' => $project_id))->with(array('thank_you_message' => true));
+	}
+
 	/**
 	 * Display a listing of donations
 	 *
@@ -42,7 +81,8 @@ class DonationsController extends \BaseController {
 
 		//convert donation amount from dollars to cents
 		$donation_amount = (integer)$donation_amount * 100;
-		return View::make('donations.create')->with(array('donation_amount' => $donation_amount, 'project' => $project));
+		$donation_amount_dollars = $donation_amount / 100;
+		return View::make('donations.create')->with(array('donation_amount' => $donation_amount, 'donation_amount_dollars' => $donation_amount_dollars, 'project' => $project));
 	}
 
 	/**
@@ -125,32 +165,6 @@ class DonationsController extends \BaseController {
 		return Redirect::route('donations.index');
 	}
 
-	public function donate(){
-		// Use the config for the stripe secret key
-		Stripe::setApiKey(Config::get('stripe.stripe.secret'));
-		$amount = Input::get('amount');
 
-		// Get the credit card details submitted by the form
-		$token = Input::get('stripeToken');
-
-		// Create the charge on Stripe's servers - this will charge the user's card
-		try {
-			$charge = Stripe_Charge::create(array(
-				"amount" 		=> $amount, // amount in cents
-				"currency" 		=> "usd",
-				"card"  		=> $token,
-				"description" 	=> 'Film Seedr Donation')
-			);
-		} catch(Stripe_CardError $e) {
-			$e_json = $e->getJsonBody();
-			$error = $e_json['error'];
-			// The card has been declined
-			// redirect back to checkout page
-			return Redirect::to('pay')->withInput()->with('stripe_errors',$error['message']);
-		}
-		// Maybe add an entry to your DB that the charge was successful, or at least Log the charge or errors
-		// Stripe charge was successfull, continue by redirecting to a page with a thank you message
-		return "success";
-	}
 
 }

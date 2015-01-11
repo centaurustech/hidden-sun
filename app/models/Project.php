@@ -17,18 +17,28 @@ class Project extends BaseModel {
 		return $genreList;
 	}
 
+	public function getDonationTotalAttribute() {
+		$donationsTotal = 0;
+
+		foreach ($this->donations as $donation) {
+			$donationsTotal += (integer)$donation->amount;
+		}
+		
+		$donationsTotal /= 100;
+		return $donationsTotal;
+	}
+
 	// Add your validation rules here
 	public static $rules = [
 		'project_title'		=> 'required|max:100',
 		'synopsis'			=> 'required|max:2000',
-		'start_date'		=> '',
-		'complete_date'		=> '',
+		'funds_start_date'	=> 'required',
 		'funds_end_date'	=> 'required',
-		'funds_current'		=> 'required',
 		'funds_goal'		=> 'required',
 		'stage'				=> 'required',
 		'video_url'			=> '',
 		'thumbnail_url'		=> '',
+		'status'			=> '',
 		'user_id'			=> 'required'
 		];
 
@@ -63,7 +73,6 @@ class Project extends BaseModel {
 	{
 		return null;
 	}
-	//getPercentFUndedAttribute;
 
 }
 
