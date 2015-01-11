@@ -7,7 +7,7 @@
 		<div class="row" id="primary-row">
 			<!-- Checks if variable global exists and outputs the value. -->
 			@if(Session::has('global'))
-				<div class="alert alert-dismissible alert-{{ $alert-type }}" role="alert">
+				<div class="alert alert-dismissible alert-default" role="alert">
 					<p>{{ Session::get('global') }}</p>
 				</div>
 			@endif

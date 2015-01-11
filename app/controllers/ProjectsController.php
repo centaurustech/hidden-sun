@@ -30,7 +30,7 @@ class ProjectsController extends \BaseController {
 			$genre_id = Input::get('genre');
 			$projects = Genre::find($genre_id)->projects;
 		} else {
-			$projects = Project::has('genres')->paginate(10);
+			$projects = Project::has('genres')->paginate(3);
 		}
 
 		foreach($projects as $project){
@@ -86,19 +86,17 @@ class ProjectsController extends \BaseController {
 			$allInput = Input::all();
 			$newProject = new Project();
 
-			$newProject->project_title 	= $allInput['project_title'];
-			$genre_id					= (integer) $allInput['genre'];
-			$genre2_id					= (integer) $allInput['genre2'];
-			$genre3_id					= (integer) $allInput['genre3'];
-			$newProject->synopsis  		= $allInput['synopsis'];
-			$newProject->start_date     = $allInput['start_date'];
-			$newProject->complete_date  = $allInput['complete_date'];
-			$newProject->funds_end_date = $allInput['funds_end_date'];
-			$newProject->funds_current  = $allInput['funds_current'];
-			$newProject->funds_goal  	= $allInput['funds_goal'];
-			$newProject->stage 			= $allInput['stage'];
-			$newProject->video_url  	= $allInput['video_url'];
-			$newProject->user_id 		= $allInput['user_id'];
+			$newProject->project_title 		= $allInput['project_title'];
+			$genre_id						= (integer) $allInput['genre'];
+			$genre2_id						= (integer) $allInput['genre2'];
+			$genre3_id						= (integer) $allInput['genre3'];
+			$newProject->synopsis  			= $allInput['synopsis'];
+			$newProject->funds_goal  		= $allInput['funds_goal'];
+			$newProject->funds_start_date 	= $allInput['funds_start_date'];
+			$newProject->funds_end_date 	= $allInput['funds_end_date'];
+			$newProject->stage 				= $allInput['stage'];
+			$newProject->video_url  		= $allInput['video_url'];
+			$newProject->user_id 			= $allInput['user_id'];
 
 			$newProject->save();
 
@@ -130,19 +128,18 @@ class ProjectsController extends \BaseController {
 		foreach ($donations as $donation) {
 			$donation_total += (integer)$donation->amount;
 		}
-		$currently_funded = (integer) $project->funds_current;
-		$currently_funded = $currently_funded + ($donation_total / 100);
+		$donation_total /= 100;
 		$funding_goal = (integer) $project->funds_goal;
-		$funding_progress = round(($currently_funded / $funding_goal) * 100);
+		$funding_progress = round(($donation_total / $funding_goal) * 100);
 
-		return View::make('projects.show')->with(array('project' => $project, 'funding_progress' => $funding_progress, 'currently_funded' => $currently_funded));
+		return View::make('projects.show')->with(array('project' => $project, 'funding_progress' => $funding_progress, 'donation_total' => $donation_total));
 	}
 
 	/**
 	 * Show the form for editing the specified project.
 	 *
 	 * @param  int  $id
-	 * @return Response
+	 * @return Responsed
 	 */
 	public function edit($id)
 	{
@@ -187,20 +184,11 @@ class ProjectsController extends \BaseController {
 		return Redirect::route('projects.index');
 	}
 
-	public function showFunded(){
-	}
-
-	public function showNew() {
-
-
-	}
-
 	public function showMyProjects() {
 		$user = Auth::user();
 		//put various sorting options here
 		if(Input::has('sort')){
 			$sort_type = Input::get('sort');
-
 			if($sort_type == 'funded'){
 				$projects = $user->projects()->where('funds_current', '>=', 'funds_goal')->get();	
 			}
