@@ -43,7 +43,7 @@ Route::get('projects/show/{id}', array(
 
 Route::get('projects/unfunded', 'ProjectsController@showUnfunded');
 
-Route::get('/user/{user_id}', array(
+Route::get('/user/{id}', array(
 	'as' => 'profile-user',
 	'uses' => 'ProfileController@user'
 ));
@@ -92,6 +92,18 @@ Route::group(array('before' => 'auth'), function() {
 		'uses' => 'AccountController@showEditPersonal'
 	));
 
+	// edit self projects (GET)
+	Route::get('account/edit-project/{project_id}', array(
+		'as' => 'project-edit',
+		'uses' => 'ProjectsController@edit'
+	));
+
+	// end own project (GET)
+	Route::get('account/end-project/{project_id}', array(
+		'as' => 'project-end',
+		'uses' => 'ProjectsController@endProject'
+	));
+
 	// Create project (GET)
 	Route::get('/projects/create', array(
 		'as' => 'projects-create',
@@ -113,13 +125,19 @@ Route::group(array('before' => 'auth'), function() {
 		));
 
 		// Edit (update) Project (PUT)
-		Route::put('projects/edit/{id}', array(
+		Route::put('projects/edit/{project_id}', array(
 			'as' => 'project-edit-put',
 			'uses' => 'ProjectsController@update'
 		));
 
+		// Edit (update) Project Status (PUT)
+		Route::post('projects/edit/status/{project_id}', array(
+			'as' => 'project-edit-status-post',
+			'uses' => 'ProjectsController@updateStatus'
+		));
+
 		// Edit personal information (PUT)
-		Route::put('account/update-personal/{id}', array(
+		Route::put('account/update-personal/{user_id}', array(
 			'as' => 'account-edit-personal-put',
 			'uses' => 'AccountController@updatePersonalInformation'
 		));

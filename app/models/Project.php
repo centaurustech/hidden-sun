@@ -28,6 +28,24 @@ class Project extends BaseModel {
 		return $donationsTotal;
 	}
 
+	public function getFundingProgressAttribute() {
+		$fundingGoal = (integer) $this->funds_goal;
+		$fundingProgress = round(($this->donation_total / $fundingGoal) * 100);
+
+		return $fundingProgress;
+	}
+
+	public function getFundingGoalAttribute() {
+		$number = $this->funds_goal;
+		$decimals = 0;
+		$dec_point = ".";
+		$thousands_sep = ",";
+
+		$fundingGoal = number_format($number, $decimals, $dec_point, $thousands_sep);
+
+		return $fundingGoal;
+	}
+
 	// Add your validation rules here
 	public static $rules = [
 		'project_title'		=> 'required|max:100',

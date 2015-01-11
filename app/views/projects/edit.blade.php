@@ -62,40 +62,7 @@
                     {{ $errors->first('synopsis') }}
                 @endif 
             </div>
-        </div>
-        <div class="form-group">
-            <label for="start_date" class="col-sm-2 control-label">Start Date</label>
-            <div class="col-sm-10">
-                <input type="text" name="start_date" id="start_date">
-                @if($errors->has('start_date'))
-                    {{ $errors->first('start_date') }}
-                @endif
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="funds_end_date" class="col-sm-2 control-label">Funding Until</label>
-            <div class="col-sm-10">
-                <input type="text" name="funds_end_date" id="funds_end_date">
-                @if($errors->has('funds_end_date'))
-                    {{ $errors->first('funds_end_date') }}
-                @endif
-            </div>
-        </div>    
-        <div class="form-group"> 
-            <label for="complete_date" class="col-sm-2 control-label">Complete Date</label>
-            <div class="col-sm-10">
-                <input type="text" name="complete_date" id="complete_date">
-                @if($errors->has('complete_date'))
-                    {{ $errors->first('complete_date') }}
-                @endif
-            </div>
-        </div>   
-        <div class="form-group">    
-            <label for="funds_current" class="col-sm-2 control-label">Currently Funded</label>
-            <div class="col-sm-10">
-                {{ Form::text('funds_current', Input::old('funds_current')) }} 
-            </div>
-        </div>    
+        </div> 
         <div class="form-group">    
             <label for="goal_amount" class="col-sm-2 control-label">Funding Goal</label>
             <div class="col-sm-10">

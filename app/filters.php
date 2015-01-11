@@ -33,7 +33,7 @@ App::after(function($request, $response)
 |
 */
 
-Route::filter('auth', function()
+Route::filter('auth', function($route)
 {
 	if (Auth::guest())
 	{
@@ -48,8 +48,22 @@ Route::filter('auth', function()
 			return Redirect::guest('login');
 		}
 	}
-});
 
+	$user_id 	= $route->getParameter('user_id');
+	$project_id = $route->getParameter('project_id');
+
+	if(isset($project_id)) {
+		$project = Project::find($project_id);
+		if( Auth::check() && Auth::user()->id != $project->user_id) {
+			//deny access
+			return Redirect::to('/');
+		}		
+	}
+
+	if(isset($user_id)) {
+		$user = User::find($user_id);
+	}
+});
 
 Route::filter('auth.basic', function()
 {

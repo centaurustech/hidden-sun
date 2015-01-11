@@ -40,7 +40,7 @@
 				              <h2>{{ $project->project_title }}</h2>
 				              <p>{{ $project->synopsis }}</p>
 				              <p><i class="icon icon-map-marker"></i>{{ $project->genre_list }}</p>
-				              <a href="{{ $project->id }}">
+				              <a href="{{ URL::route('project-show', $project->id) }}">
 				              	<button type="button" class="btn btn-info">
 				              		View Project
 				              	</button>
@@ -54,7 +54,7 @@
 				              </div>
 				              <div class="row">
 				                <div class="col-md-4"><b>{{ $project->funding_progress }}%</b><br/><small>FUNDED</small></div>
-				                <div class="col-md-4"><b>${{ $project->currently_funded_with_donations }}</b><br/><small>PLEDGED</small></div>
+				                <div class="col-md-4"><b>${{ $project->donation_total }}</b><br/><small>PLEDGED</small></div>
 				                <div class="col-md-4"><b>{{ $project->days_left }}</b><br/><small>DAYS</small></div>
 				              </div>
 				            </div>

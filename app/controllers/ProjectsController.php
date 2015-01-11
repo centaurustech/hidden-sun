@@ -1,17 +1,6 @@
 <?php
 class ProjectsController extends \BaseController {
 
-	public function showDonationTotal($id) {
-		$project = Project::find($id);
-		$donations = Project::find($id)->donations()->get();
-		$donation_total = 0;
-
-		foreach ($donations as $donation) {
-			$donation_total += (integer)$donation->amount;
-		}
-
-		return View::make('show-donations-total')->with(array('project' => $project, 'donation_total' => $donation_total));
-	}
 
 	/**
 	 * Display a listing of projects
@@ -30,31 +19,19 @@ class ProjectsController extends \BaseController {
 			$genre_id = Input::get('genre');
 			$projects = Genre::find($genre_id)->projects;
 		} else {
-			$projects = Project::has('genres')->paginate(3);
+			$projects = Project::has('genres')->paginate(10);
 		}
 
-		foreach($projects as $project){
-			$donations = Project::find($project->id)->donations()->get();
-
-			$donation_total = 0;
-
-			foreach($donations as $donation){
-				$donation_total += (integer)$donation->amount;
-			}
-
-			$currently_funded = (integer) $project->funds_current;
-			$currently_funded_with_donations = $currently_funded + ($donation_total / 100);
+		foreach ($projects as $project){
 			$funding_goal = (integer) $project->funds_goal;
-			$funding_progress = round(($currently_funded / $funding_goal) * 100);
+			$funding_progress = round(($project->donation_total / $funding_goal) * 100);
 			$project['funding_progress'] = $funding_progress;
-			$project['currently_funded_with_donations'] = $currently_funded_with_donations;
 			
 			$funding_ends = new Carbon($project->funds_end_date);
 			$now = Carbon::now();
 			$days_left = ($funding_ends->diff($now)->days < 1) ? 'today' : $funding_ends->diffForHumans($now);
 			$project['days_left'] = $days_left;
 		}
-		
 		$genres = Genre::where('parent_genre', '=', '1')->get();
 		return View::make('projects.index')->with(array('projects' => $projects, 'genres' => $genres));
 	}
@@ -122,17 +99,7 @@ class ProjectsController extends \BaseController {
 	{
 		$project = Project::findOrFail($id);
 
-		$donations = Project::find($id)->donations()->get();
-		$donation_total = 0;
-
-		foreach ($donations as $donation) {
-			$donation_total += (integer)$donation->amount;
-		}
-		$donation_total /= 100;
-		$funding_goal = (integer) $project->funds_goal;
-		$funding_progress = round(($donation_total / $funding_goal) * 100);
-
-		return View::make('projects.show')->with(array('project' => $project, 'funding_progress' => $funding_progress, 'donation_total' => $donation_total));
+		return View::make('projects.show')->with(array('project' => $project));
 	}
 
 	/**
@@ -149,6 +116,11 @@ class ProjectsController extends \BaseController {
 		return View::make('projects.edit')->with(array('this_project' => $this_project, 'main_genres' => $main_genres, 'secondary_genres' => $secondary_genres));
 	}
 
+	public function endProject($id)
+	{
+		$project = Project::find($id);
+		return View::make('projects.endproject')->with(array('project' => $project));
+	}
 	/**
 	 * Update the specified project in storage.
 	 *
@@ -169,6 +141,15 @@ class ProjectsController extends \BaseController {
 		$project->update($data);
 
 		return Redirect::route('projects.index');
+	}
+
+	public function updateStatus($id)
+	{
+		$project = Project::find($id);
+		$project->status = Input::get('status');
+		$project->save();
+
+		return Redirect::route('manage-projects');
 	}
 
 	/**
