@@ -37,6 +37,8 @@ Route::filter('auth', function()
 {
 	if (Auth::guest())
 	{
+		return Redirect::guest(URL::route('account-sign-in'));
+
 		if (Request::ajax())
 		{
 			return Response::make('Unauthorized', 401);

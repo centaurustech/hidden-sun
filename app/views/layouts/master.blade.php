@@ -1,34 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <title>Capstone</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
-    <link href="/css/mainpage.css" rel="stylesheet">
-
-@yield('topscript')
-</head>
+	@include('partials.header')
 <body>
-	@include('partials.navbar')
-
-	<div id="main" class="container">
-		@if (Session::has('successMessage'))
-		    <div class="alert alert-success">{{{ Session::get('successMessage') }}}</div>
-		@endif
-		@if (Session::has('errorMessage'))
-		    <div class="alert alert-danger">{{{ Session::get('errorMessage') }}}</div>
-		@endif
-		
-    </div>
-		@yield('content')
-
-    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-
-@yield('bottomscript')
+	@include('partials.nav')
+	<div class="container-fluid" id="primary-container">
+		<div class="row" id="primary-row">
+			<!-- Checks if variable global exists and outputs the value. -->
+			@if(Session::has('global'))
+				<div class="alert alert-dismissible alert-{{ $alert }}" role="alert">
+					<p>{{ Session::get('global') }}</p>
+				</div>
+			@endif
+		    @yield('content')
+		</div>
+	</div>
+	@include('partials.footer')
 </body>
 </html>

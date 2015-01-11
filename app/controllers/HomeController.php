@@ -15,9 +15,44 @@ class HomeController extends BaseController {
 	|
 	*/
 
-	public function showWelcome()
+	public function showHomepage()
 	{
-		return View::make('hello');
+		// get some random project to display on the homepage
+		$random_project = Project::random(1)->get();
+		return View::make('index')->with('random_project', $random_project);
 	}
+	
+	public function showLogin()
+	{
+		/*$email = Input::get('email');
+		$password = Input::get('password');
+		
+		if (Auth::attempt(array('email' => $email, 'password' => $password))) {
+    		return Redirect::intended('/');
+		} else {
+    		Session::flash('errorMessage', 'Failed to authenticate.');
+    		
+    		return Redirect::back();
+		}
+		*/
+		return View::make('auth.login');
+	}
+	/*
+	public function showSignupPage()
+	{
+		return View::make('signup');
+	}
+	*/
 
+	public function home() {
+
+		Mail::send('emails.auth.newaccount', array('name' => 'Louis'), function($message) {
+			$message->to('louishawkins@gmail.com', 'Louis Hawkins')->subject('Test Email');
+		});
+
+		return View::make('index');
+	}
+	
+	
+	
 }
