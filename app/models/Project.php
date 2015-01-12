@@ -60,6 +60,16 @@ class Project extends BaseModel {
 		'user_id'			=> 'required'
 		];
 
+	//temporary rules for updating a project
+	public static $rules_for_update = [
+		'project_title'		=> 'required|max:100',
+		'synopsis'			=> 'required|max:2000',
+		'funds_goal'		=> 'required',
+		'stage'				=> 'required',
+		'video_url'			=> '',
+		'user_id'			=> 'required'
+	];
+	
 	// Database relationships
 
 	protected $table = 'projects';

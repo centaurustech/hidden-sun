@@ -117,30 +117,6 @@ class AccountController extends BaseController {
 		return View::make('account.password');
 	}
 
-
-				public function store()
-				{
-					//create the validator
-					$validator = Validator::make(Input::all(), Post::$rules);
-
-					if ($validator->fails()) {
-						return Redirect::back()->withInput()->withErrors($validator);
-					} else {
-						$all_input = Input::all();
-						$new_post = new Post();
-
-						$new_post->title   = $all_input['title'];
-						$new_post->body    = $all_input['body'];
-						$new_post->user_id = Auth::id();
-						$new_post->save();
-
-						return Redirect::action('PostsController@show', $new_post->id);
-					}
-				}
-
-
-
-
 	public function postChangePassword() {
 		$validator = Validator::make(Input::all(), array(
 			'old_password' => 'required',
@@ -260,7 +236,4 @@ class AccountController extends BaseController {
 		$current_user = Auth::user();
 		return View::make('account.edit-personal')->with('current_user', $current_user);
 	}
-
-
-
 }

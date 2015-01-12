@@ -29,7 +29,7 @@ class ProjectsController extends \BaseController {
 			
 			$funding_ends = new Carbon($project->funds_end_date);
 			$now = Carbon::now();
-			$days_left = ($funding_ends->diff($now)->days < 1) ? 'today' : $funding_ends->diffForHumans($now);
+			$days_left = ($now->diff($funding_ends)->days < 1) ? 'today' : $funding_ends->diffForHumans($now);
 			$project['days_left'] = $days_left;
 		}
 		$genres = Genre::where('parent_genre', '=', '1')->get();
