@@ -56,11 +56,6 @@
                             <span style="margin-left:8px;">or</span>  
                         </div>
                     </div>
-                    <div style="border-top: 1px solid #999; padding-top:20px"  class="form-group">
-                        <div class="col-md-offset-3 col-md-9">
-                            <button id="btn-fbsignup" type="button" class="btn btn-primary" value="Create Account"><i class="icon-facebook"></i>   Sign Up with Facebook</button>
-                        </div>                                            
-                    </div>
                     {{ Form::token() }}
                 </form>
                 </div>

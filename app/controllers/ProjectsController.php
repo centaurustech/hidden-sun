@@ -63,6 +63,9 @@ class ProjectsController extends \BaseController {
 			$allInput = Input::all();
 			$newProject = new Project();
 
+			$current_user_email = Auth::user()->email;
+			$thumbnail_url = Gravatar::src($current_user_email, 1024);
+
 			$newProject->project_title 		= $allInput['project_title'];
 			$genre_id						= (integer) $allInput['genre'];
 			$genre2_id						= (integer) $allInput['genre2'];
@@ -73,6 +76,7 @@ class ProjectsController extends \BaseController {
 			$newProject->funds_end_date 	= $allInput['funds_end_date'];
 			$newProject->stage 				= $allInput['stage'];
 			$newProject->video_url  		= $allInput['video_url'];
+			$newProject->thumbnail_url		= $thumbnail_url;
 			$newProject->user_id 			= $allInput['user_id'];
 
 			$newProject->save();
@@ -98,8 +102,8 @@ class ProjectsController extends \BaseController {
 	public function show($id)
 	{
 		$project = Project::findOrFail($id);
-
-		return View::make('projects.show')->with(array('project' => $project));
+		$creator = User::find($project->user_id);
+		return View::make('projects.show')->with(array('project' => $project, 'creator' => $creator));
 	}
 
 	/**

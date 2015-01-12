@@ -4,9 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-
-    "hash": "5c05ae42b960f41ca1453b118554b3b2",
-
+    "hash": "112ded1cf3fea8f6c8809eb627ad0fcc",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -687,16 +685,16 @@
         },
         {
             "name": "patchwork/utf8",
-            "version": "v1.1.26",
+            "version": "v1.1.27",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tchwork/utf8.git",
-                "reference": "6b8e46603b49ee87ad6bceb314da94cc04ffcdce"
+                "reference": "f26cc98847add84cb27c5d77e2e0dff715944ac6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tchwork/utf8/zipball/6b8e46603b49ee87ad6bceb314da94cc04ffcdce",
-                "reference": "6b8e46603b49ee87ad6bceb314da94cc04ffcdce",
+                "url": "https://api.github.com/repos/tchwork/utf8/zipball/f26cc98847add84cb27c5d77e2e0dff715944ac6",
+                "reference": "f26cc98847add84cb27c5d77e2e0dff715944ac6",
                 "shasum": ""
             },
             "require": {
@@ -709,11 +707,6 @@
                 "ext-mbstring": "Use Mbstring for best performance"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.1-dev"
-                }
-            },
             "autoload": {
                 "psr-0": {
                     "Patchwork": "class/",
@@ -739,7 +732,7 @@
                 "utf-8",
                 "utf8"
             ],
-            "time": "2014-11-08 10:13:25"
+            "time": "2015-01-11 12:41:11"
         },
         {
             "name": "phpseclib/phpseclib",
@@ -1858,9 +1851,107 @@
             "description": "Symfony Translation Component",
             "homepage": "http://symfony.com",
             "time": "2015-01-03 15:23:51"
-        }
-    ],
-    "packages-dev": [
+        },
+        {
+            "name": "thomaswelton/gravatarlib",
+            "version": "0.1.0",
+            "target-dir": "thomaswelton/GravatarLib",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thomaswelton/gravatarlib.git",
+                "reference": "8a4e829c53ca2abb51ef2e514f696938a9bdbd0c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thomaswelton/gravatarlib/zipball/8a4e829c53ca2abb51ef2e514f696938a9bdbd0c",
+                "reference": "8a4e829c53ca2abb51ef2e514f696938a9bdbd0c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "suggest": {
+                "twig/twig": ">=1.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "thomaswelton\\GravatarLib\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sam Thompson",
+                    "email": "sam@emberlabs.org"
+                },
+                {
+                    "name": "Damian Bushong",
+                    "email": "damian@emberlabs.org"
+                },
+                {
+                    "name": "Thomas Welton",
+                    "email": "thomaswelton@me.com",
+                    "homepage": "https://github.com/thomaswelton",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A lightweight PHP 5.3 OOP library providing easy gravatar integration.",
+            "keywords": [
+                "gravatar",
+                "templating",
+                "twig"
+            ],
+            "time": "2014-03-02 18:29:18"
+        },
+        {
+            "name": "thomaswelton/laravel-gravatar",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thomaswelton/laravel-gravatar.git",
+                "reference": "24b080a95a57373a63f18144bc7fbd455d5b73f6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thomaswelton/laravel-gravatar/zipball/24b080a95a57373a63f18144bc7fbd455d5b73f6",
+                "reference": "24b080a95a57373a63f18144bc7fbd455d5b73f6",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "4.x",
+                "php": ">=5.3.0",
+                "thomaswelton/gravatarlib": "0.1.x"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Thomaswelton\\LaravelGravatar": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "ThomasWelton",
+                    "email": "thomaswelton@me.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Laravel 4 Gravatar helper",
+            "homepage": "https://github.com/thomaswelton/laravel-gravatar",
+            "keywords": [
+                "gravatar",
+                "laravel",
+                "laravel4"
+            ],
+            "time": "2014-07-21 16:35:56"
+        },
         {
             "name": "way/generators",
             "version": "2.6.1",
@@ -1910,68 +2001,13 @@
             "time": "2014-05-27 14:21:26"
         }
     ],
-    "packages-dev": [
-        {
-            "name": "way/generators",
-            "version": "3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/JeffreyWay/Laravel-4-Generators.git",
-                "reference": "978712d55cac12175bb8310dffcd0e6c68e482c8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/JeffreyWay/Laravel-4-Generators/zipball/978712d55cac12175bb8310dffcd0e6c68e482c8",
-                "reference": "978712d55cac12175bb8310dffcd0e6c68e482c8",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "~4.0",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "behat/behat": "~2.5.1",
-                "behat/mink": "~1.5.0",
-                "behat/mink-extension": "~1.2.0",
-                "behat/mink-goutte-driver": "~1.0.9",
-                "behat/mink-selenium2-driver": "~1.1.1",
-                "phpspec/phpspec": "~2.0",
-                "phpunit/phpunit": "~3.7"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Way\\Generators": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jeffrey Way",
-                    "email": "jeffrey@jeffrey-way.com"
-                }
-            ],
-            "description": "Rapidly generate resources, migrations, models, and much more.",
-            "time": "2014-09-01 19:24:09"
-        }
-    ],
-    "aliases": [
-
-    ],
+    "packages-dev": [],
+    "aliases": [],
     "minimum-stability": "stable",
-
     "stability-flags": {
         "fzaninotto/faker": 20
     },
-
     "prefer-stable": false,
-    "platform": [
-
-    ],
-    "platform-dev": [
-
-    ]
+    "platform": [],
+    "platform-dev": []
 }

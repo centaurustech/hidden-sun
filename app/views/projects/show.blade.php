@@ -13,6 +13,7 @@
 	<div class="row">
 		<div class="title">
 			<h2><center>{{ $project->project_title }}</center></h2>
+			<h3><center>Creator: <a href="{{ URL::route('profile-user', $creator->id) }}">{{ $creator->first_name }} {{ $creator->last_name }}</a></center></h3>
 			<h4><center>{{ $project->stage }}</center></h4>
 		</div>
 	</div>

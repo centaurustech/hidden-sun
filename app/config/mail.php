@@ -54,7 +54,8 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => 'louishawkins@gmail.com', 'name' => 'Auth'),
+	//'from' => array('address' => 'louishawkins@gmail.com', 'name' => 'Auth'),
+	'from' => array('address' => 'louis@filmseedr.com', 'name' => 'Film Seedr'),
 
 	/*
 	|--------------------------------------------------------------------------

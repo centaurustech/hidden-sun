@@ -91,17 +91,55 @@ class AccountController extends BaseController {
 			$user->active 			= 1;
 			$user->activation_code 	= '';
 
-			if($user->save()) {
-				return Redirect::route('home')->with('global','You have successfully activated your account!');
+			if($user->save()) {	
+				// Make them a drink. And a profile.
+				$new_profile = new Profile();
+				$profile_img = Gravatar::src($user->email, 1024);
+
+				$new_profile->user_id		= $user->id;
+				$new_profile->title         = 'Creator';
+				$new_profile->summary 		= '';
+				$new_profile->profile_img 	= $profile_img;
+				$new_profile->website_url 	= '';
+
+				if($new_profile->save()){
+					return Redirect::route('home')->with('global','You have successfully activated your account!');
+				} else {
+					return Redirect::route('home')->with('global','Oops! Something went wrong.');
+				}
+			} else {
+			return Redirect::route('home')->with('global', 'Oops! Something went wrong when activation your account. Please try again.');
 			}
-		} else {
-			return Redirect::route('home')->with('global', 'Oops! Somehthing went wrong when activation your account. Please try again.');
 		}
 	}
 
 	public function getChangePassword() {
 		return View::make('account.password');
 	}
+
+
+				public function store()
+				{
+					//create the validator
+					$validator = Validator::make(Input::all(), Post::$rules);
+
+					if ($validator->fails()) {
+						return Redirect::back()->withInput()->withErrors($validator);
+					} else {
+						$all_input = Input::all();
+						$new_post = new Post();
+
+						$new_post->title   = $all_input['title'];
+						$new_post->body    = $all_input['body'];
+						$new_post->user_id = Auth::id();
+						$new_post->save();
+
+						return Redirect::action('PostsController@show', $new_post->id);
+					}
+				}
+
+
+
 
 	public function postChangePassword() {
 		$validator = Validator::make(Input::all(), array(
