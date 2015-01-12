@@ -11,7 +11,7 @@
             <div class="col-md-5">
               <h2 class="featurette-heading">Louis Hawkins</h2>
                 <p>Email: louishawkinsGmail.com</p>
-                <p><a class="social social-github" href="https://github.com/Sonnochi" role="button">Github</a></p>
+                <p><a class="social social-github" href="https://github.com/louishawkins" role="button">github</a></p>
                 <p><a href="https://www.linkedin.com/in/louishawkins" role="button">Linkedin</a></p>
                 <p><a href="http://alumni.codeup.com/students/76" role="button">Codeup</a></p>
             </div>
