@@ -53,7 +53,6 @@
                         <!-- Button -->                                        
                         <div class="col-md-offset-3 col-md-9">
                             <button id="btn-signup" type="submit" class="btn btn-info"><i class="icon-hand-right"></i>Sign Up</button>
-                            <span style="margin-left:8px;">or</span>  
                         </div>
                     </div>
                     {{ Form::token() }}
