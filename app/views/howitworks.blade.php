@@ -21,11 +21,6 @@
                 <h3>Funds for the project must only be for the project.</h3>
                 <p>Flim Seedr is here to bring new movies to life. Unless it a documentary to promo.te and move to action, we cannot promise nor promote that donated funds will be used to support charities or caues. </p>
             </ul>
-            <ul>
-                <span class="glyphicon glyphicon-film" aria-hidden="true"></span>
-                <h3></h3>
-                <p></p>
-            </ul>
         </div>
 
  
