@@ -24,17 +24,6 @@ class HomeController extends BaseController {
 	
 	public function showLogin()
 	{
-		/*$email = Input::get('email');
-		$password = Input::get('password');
-		
-		if (Auth::attempt(array('email' => $email, 'password' => $password))) {
-    		return Redirect::intended('/');
-		} else {
-    		Session::flash('errorMessage', 'Failed to authenticate.');
-    		
-    		return Redirect::back();
-		}
-		*/
 		return View::make('auth.login');
 	}
 	

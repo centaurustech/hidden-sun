@@ -46,6 +46,12 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 		return $this->hasMany ('Project');
 	}
 
+
+	public function profiles()
+	{
+		return $this->hasOne ('Profile');
+	}
+
 	public function contents()
 	{
 		//relationship to table containing [PATH] to images and video

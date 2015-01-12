@@ -28,7 +28,7 @@ return array(
 	|
 	*/
 
-	'host' => 'smtp.gmail.com',
+	'host' => 'smtp.mailgun.org',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -54,7 +54,8 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => 'louishawkins@gmail.com', 'name' => 'Auth'),
+	//'from' => array('address' => 'louishawkins@gmail.com', 'name' => 'Auth'),
+	'from' => array('address' => 'louis@filmseedr.com', 'name' => 'Film Seedr'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -80,7 +81,7 @@ return array(
 	|
 	*/
 
-	'username' => $_ENV['gmail'],
+	'username' => $_ENV['mailgun-smtp'],
 
 	/*
 	|--------------------------------------------------------------------------
@@ -93,7 +94,7 @@ return array(
 	|
 	*/
 
-	'password' => $_ENV['gmail_pass'],
+	'password' => $_ENV['mailgun-pass'],
 
 	/*
 	|--------------------------------------------------------------------------

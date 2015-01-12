@@ -45,7 +45,7 @@ Route::get('projects/unfunded', 'ProjectsController@showUnfunded');
 
 Route::get('/user/{id}', array(
 	'as' => 'profile-user',
-	'uses' => 'ProfileController@user'
+	'uses' => 'ProfileController@showProfile'
 ));
 //make the stripe payment page
 Route::post('/projects/donate/{id}', array(
@@ -73,6 +73,13 @@ Route::group(array('before' => 'auth'), function() {
 			'as' => 'manage-projects',
 			'uses' => 'ProjectsController@showMyProjects'
 		));
+
+	//Manage profile page
+	Route::get('user/profile', array(
+		'as' => 'profile', 
+		'uses' => 'ProfileController@showProfile'
+	));
+
 
 	// Account settings page (GET)
 	Route::get('/account/settings', array(
@@ -202,6 +209,4 @@ Route::group(array('before' => 'guest'), function(){
 		'uses' => 'AccountController@getActivate'
 	));
 });
-
-//Route::resource('projects', 'ProjectsController');
 
