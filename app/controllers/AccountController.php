@@ -38,7 +38,7 @@ class AccountController extends BaseController {
 				return Redirect::route('account-sign-in')->with('global', 'Please check your email and password and try again. Have you activated your account?');
 			}
 		}
-		return Redirect::route('account-sign-in')->with('global', 'There was a problem signing into your account. Have you activated your account?');
+		return Redirect::route('account-sign-in')->with(array('global' => 'There was a problem signing into your account. Have you activated your account?'));
 	}
 
 	public function getCreate() {
@@ -91,17 +91,55 @@ class AccountController extends BaseController {
 			$user->active 			= 1;
 			$user->activation_code 	= '';
 
-			if($user->save()) {
-				return Redirect::route('home')->with('global', 'You have successfully activated your account!');
+			if($user->save()) {	
+				// Make them a drink. And a profile.
+				$new_profile = new Profile();
+				$profile_img = Gravatar::src($user->email, 1024);
+
+				$new_profile->user_id		= $user->id;
+				$new_profile->title         = 'Creator';
+				$new_profile->summary 		= '';
+				$new_profile->profile_img 	= $profile_img;
+				$new_profile->website_url 	= '';
+
+				if($new_profile->save()){
+					return Redirect::route('home')->with('global','You have successfully activated your account!');
+				} else {
+					return Redirect::route('home')->with('global','Oops! Something went wrong.');
+				}
+			} else {
+			return Redirect::route('home')->with('global', 'Oops! Something went wrong when activation your account. Please try again.');
 			}
-		} else {
-			return Redirect::route('home')->with('global', 'Oops! Somehthing went wrong when activation your account. Please try again.');
 		}
 	}
 
 	public function getChangePassword() {
 		return View::make('account.password');
 	}
+
+
+				public function store()
+				{
+					//create the validator
+					$validator = Validator::make(Input::all(), Post::$rules);
+
+					if ($validator->fails()) {
+						return Redirect::back()->withInput()->withErrors($validator);
+					} else {
+						$all_input = Input::all();
+						$new_post = new Post();
+
+						$new_post->title   = $all_input['title'];
+						$new_post->body    = $all_input['body'];
+						$new_post->user_id = Auth::id();
+						$new_post->save();
+
+						return Redirect::action('PostsController@show', $new_post->id);
+					}
+				}
+
+
+
 
 	public function postChangePassword() {
 		$validator = Validator::make(Input::all(), array(
@@ -123,15 +161,15 @@ class AccountController extends BaseController {
 				$user->password = Hash::make($new_password);
 
 				if($user->save()){
-					return Redirect::route('home')->with('global', 'Your password has been changed successfully!');
+					return Redirect::route('home')->with(array('global' => 'Your password has been changed successfully!', 'alert-type' => 'success'));
 				}
 			} else {
-				return Redirect::route('account-change-password')->with('global', 'Your old password is incorrect.');
+				return Redirect::route('account-change-password')->with(array('global' => 'Your old password is incorrect.', 'alert-type' => 'danger'));
 			}
 
 		}
 
-		return Redirect::route('account-change-password')->with('global', 'Your password could not be changed.');
+		return Redirect::route('account-change-password')->with(array('global' => 'Your password could not be changed.', 'alert-type' => 'danger'));
 	}
 
 	public function getForgotPassword(){
@@ -184,10 +222,10 @@ class AccountController extends BaseController {
 			$user->code = '';
 
 			if($user->save()){
-				return Redirect::route('home')->with('global', 'Your account has been recovered and you can sign in with your new password');
+				return Redirect::route('home')->with(array('global' => 'Your account has been recovered and you can sign in with your new password', 'alert-type' => 'success'));
 			}
 		}
-		return Redirect::route('home')->with('global', 'Could not recover your account');
+		return Redirect::route('home')->with(array('global' => 'Could not recover your account', 'alert-type' => 'danger'));
 	}
 
 	// Method to update personal account information
@@ -211,7 +249,6 @@ class AccountController extends BaseController {
 
 			return Redirect::route('manage-account');
 		}
-		//return Redirect::route('manage-account');
 	}
 
 	public function showManageAccount() {

@@ -6,9 +6,12 @@
 	"type": "project",
 	"require": {
 		"laravel/framework": "4.2.*",
+		"way/generators": "~2.0",
 		"fzaninotto/faker": "1.5.*@dev",
 		"stripe/stripe-php": "~1.17",
-		"nesbot/Carbon": "*"
+		"guzzlehttp/guzzle": "~4.0",
+		"nesbot/Carbon": "*",
+		"thomaswelton/laravel-gravatar": "0.1.x"
 	},
 	"autoload": {
 		"classmap": [
@@ -38,6 +41,7 @@
 	},
 	"minimum-stability": "stable",
 	"require-dev": {
+
 		"way/generators": "~2.0"
 	}
 }

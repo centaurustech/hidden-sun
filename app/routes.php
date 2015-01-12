@@ -11,6 +11,11 @@
 |
 */
 
+Route::get('/donation-total/{id}', array(
+	'as' => 'donation-total',
+	'uses' => 'ProjectsController@showDonationTotal'
+));
+
 Route::get('/', array(
 	'as' => 'home',
 	'uses' => 'HomeController@showHomepage'
@@ -31,11 +36,27 @@ Route::get('projects/discover', array(
 	'uses' => 'ProjectsController@index'
 ));
 
+Route::get('projects/show/{id}', array(
+	'as' => 'project-show',
+	'uses' => 'ProjectsController@show'
+));
+
 Route::get('projects/unfunded', 'ProjectsController@showUnfunded');
 
-Route::get('/user/{user_id}', array(
+Route::get('/user/{id}', array(
 	'as' => 'profile-user',
-	'uses' => 'ProfileController@user'
+	'uses' => 'ProfileController@showProfile'
+));
+//make the stripe payment page
+Route::post('/projects/donate/{id}', array(
+	'as' => 'donation-create',
+	'uses' => 'DonationsController@create'
+));
+
+// Payment-stripe routes (POST)
+Route::post('/donate', array(
+	'as' => 'donate',
+	'uses' => 'DonationsController@donate'
 ));
 
 // Routes for authenticated users
@@ -52,6 +73,13 @@ Route::group(array('before' => 'auth'), function() {
 			'as' => 'manage-projects',
 			'uses' => 'ProjectsController@showMyProjects'
 		));
+
+	//Manage profile page
+	Route::get('user/profile', array(
+		'as' => 'profile', 
+		'uses' => 'ProfileController@showProfile'
+	));
+
 
 	// Account settings page (GET)
 	Route::get('/account/settings', array(
@@ -71,8 +99,20 @@ Route::group(array('before' => 'auth'), function() {
 		'uses' => 'AccountController@showEditPersonal'
 	));
 
+	// edit self projects (GET)
+	Route::get('account/edit-project/{project_id}', array(
+		'as' => 'project-edit',
+		'uses' => 'ProjectsController@edit'
+	));
+
+	// end own project (GET)
+	Route::get('account/end-project/{project_id}', array(
+		'as' => 'project-end',
+		'uses' => 'ProjectsController@endProject'
+	));
+
 	// Create project (GET)
-	Route::get('projects/create', array(
+	Route::get('/projects/create', array(
 		'as' => 'projects-create',
 		'uses' => 'ProjectsController@create'
 	));
@@ -92,13 +132,19 @@ Route::group(array('before' => 'auth'), function() {
 		));
 
 		// Edit (update) Project (PUT)
-		Route::put('projects/edit/{id}', array(
+		Route::put('projects/edit/{project_id}', array(
 			'as' => 'project-edit-put',
 			'uses' => 'ProjectsController@update'
 		));
 
+		// Edit (update) Project Status (PUT)
+		Route::post('projects/edit/status/{project_id}', array(
+			'as' => 'project-edit-status-post',
+			'uses' => 'ProjectsController@updateStatus'
+		));
+
 		// Edit personal information (PUT)
-		Route::put('account/update-personal/{id}', array(
+		Route::put('account/update-personal/{user_id}', array(
 			'as' => 'account-edit-personal-put',
 			'uses' => 'AccountController@updatePersonalInformation'
 		));
@@ -126,6 +172,12 @@ Route::group(array('before' => 'guest'), function(){
 		Route::post('/account/forgot-password', array(
 			'as' => 'account-forgot-password-post',
 			'uses' => 'AccountController@postForgotPassword'
+		));
+
+		// Make Donation (POST)
+		Route::post('projects/contribute/{id}', array(
+			'as' => 'project-contribute-post',
+			'uses' => 'ProjectsController@doDonation'
 		));
 	});
 
@@ -156,45 +208,5 @@ Route::group(array('before' => 'guest'), function(){
 		'as' => 'account-activate',
 		'uses' => 'AccountController@getActivate'
 	));
-
-	// payment/stripe routes (GET)
-	Route::get('/projects/contribute/{id}', array(
-		'as' => 'project-contribute',
-		'uses' => 'ProjectsController@showContribute'
-	));
-
-	// Payment-stripe routes (POST)
-	Route::post('pay', function(){
-		// Use the config for the stripe secret key
-		Stripe::setApiKey(Config::get('stripe.stripe.secret'));
-
-		// Get the credit card details submitted by the form
-		$token = Input::get('stripeToken');
-		$amount = Input::get('amount');
-		$amount = (integer) $amount * 100;
-
-		// Create the charge on Stripe's servers - this will charge the user's card
-		try {
-		    $charge = Stripe_Charge::create(array(
-		      "amount" => $amount, // amount in cents
-		      "currency" => "usd",
-		      "card"  => $token,
-		      "description" => 'Charge for my product')
-		    );
-
-		} catch(Stripe_CardError $e) {
-		    $e_json = $e->getJsonBody();
-		    $error = $e_json['error'];
-		    // The card has been declined
-		    // redirect back to checkout page
-		    return Redirect::to('pay')
-		        ->withInput()->with('stripe_errors',$error['message']);
-		}
-		// Maybe add an entry to your DB that the charge was successful, or at least Log the charge or errors
-		// Stripe charge was successfull, continue by redirecting to a page with a thank you message
-		return Redirect::to('pay/success');
-	});
 });
-
-Route::resource('projects', 'ProjectsController');
 

@@ -121,8 +121,8 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
-		'Way\Generators\GeneratorsServiceProvider'
-
+		'Thomaswelton\LaravelGravatar\LaravelGravatarServiceProvider',
+		//'Way\Generators\GeneratorsServiceProvider'
 	),
 
 	/*
@@ -190,6 +190,7 @@ return array(
 		'Validator'         => 'Illuminate\Support\Facades\Validator',
 		'View'              => 'Illuminate\Support\Facades\View',
 		'Carbon' 			=> 'Carbon\Carbon',
+		'Gravatar' 			=> 'Thomaswelton\LaravelGravatar\Facades\Gravatar'
 	),
 
 );
