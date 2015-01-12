@@ -29,7 +29,7 @@
 		<div class="col-md-8" style="padding: 10px;">
 			@foreach ($projects as $project)
 			<ul class="thumbnails list-unstyled">
-		        <li class="col-md-4" style="height: 550px; padding: 5px; margin-top:10px;margin-bottom:20px;">
+		        <li class="col-md-3" style="height: 550px; padding: 5px; margin-top:10px;margin-bottom:20px;">
 		          <div class="thumbnail" style="padding: 0;">
 		            <div style="padding:4px">
 		              <img alt="300x200" style="width: 100%" src="{{ $project->thumbnail_url }}">
