@@ -210,5 +210,3 @@ Route::group(array('before' => 'guest'), function(){
 	));
 });
 
-//Route::resource('projects', 'ProjectsController');
-

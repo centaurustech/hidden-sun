@@ -167,15 +167,8 @@ class ProjectsController extends \BaseController {
 
 	public function showMyProjects() {
 		$user = Auth::user();
-		//put various sorting options here
-		if(Input::has('sort')){
-			$sort_type = Input::get('sort');
-			if($sort_type == 'funded'){
-				$projects = $user->projects()->where('funds_current', '>=', 'funds_goal')->get();	
-			}
-		} else {
-			$projects = $user->projects()->get();
-		}
+		$projects = $user->projects()->get();
+	
 		return View::make('projects.self')->with(array('user' => $user, 'projects' => $projects));
 	}
 

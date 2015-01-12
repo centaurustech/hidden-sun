@@ -27,8 +27,9 @@
                         <span class="caret"></span>
                     </a>
                         <ul class="dropdown-menu" role="menu">
-                            <li role="presentation"><a href="{{ URL::route('manage-account') }}" role="menuitem" tabindex="-1">Manage Account</a></li>
                             <li role="presentation"><a href="{{ URL::route('manage-projects') }}" role="menuitem" tabindex="-1">My Projects</a></li>
+                            <li role="presentation"><a href="{{ URL::route('profile-user', Auth::user()->id) }}" role="menuitem" tabindex="-1">My Profile</a></li>
+                            <li role="presentation"><a href="{{ URL::route('manage-account') }}" role="menuitem" tabindex="-1">Manage Account</a></li>
                         </ul>
                 </li>
                 <li><a style="color:black;" href="{{ URL::route('account-sign-out') }}">Sign Out</a></li>
