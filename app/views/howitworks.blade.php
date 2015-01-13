@@ -4,7 +4,7 @@
 <div class="jumbotron">
       <div class="container">
         <h2 class="mega">How It Works</h2>
-        <p class="h3">Film Seedr is a community dedicated to bringing together creators and supporters to bring amaizing projects to life.</p>
+        <p class="h3">Film Seedr is a community dedicated to bringing together creators and supporters to bring amazing projects to life.</p>
       </div>
 </div>
 
