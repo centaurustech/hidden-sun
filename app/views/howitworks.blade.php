@@ -4,7 +4,7 @@
 <div class="jumbotron">
       <div class="container">
         <h2 class="mega">How It Works</h2>
-        <p class="h3">Film Seedr is a local community dedicated to bring many different film talents together to bring amaizing projects to life.</p>
+        <p class="h3">Film Seedr is a community dedicated to bringing together creators and supporters to bring amaizing projects to life.</p>
       </div>
 </div>
 
@@ -21,7 +21,7 @@
                 <li>
                     <span class="glyphicon glyphicon-film"></span>
                     <h3>It's Safe</h3>
-                    <p>Transactions are handled with Stripe so we never store your credit card information on our servers.</p>
+                    <p>Transactions are handled with <a href="https://stripe.com/">Stripe</a> so we never store your credit card information on our servers.</p>
                 </li>
             </ul>
             <h2>Get funding for your next project.</h2>
