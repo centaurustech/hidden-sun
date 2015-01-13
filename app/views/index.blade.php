@@ -4,10 +4,12 @@
 <div class="container-fluid" style="margin-bottom:80px;">
 	<div class="row">
 		<div class="header">
-			<div id="header-copy">
-				<h1 style="font-size:4em;">Fund your independent film.</h1>
-				<p></p>
-				<p><a class="btn btn-success btn-lg" href="{{ URL::route('howto') }}" role="button">How it Works</a></p>
+			<div class="col-md-8 col-md-offset-2">
+				<div id="header-copy">
+					<h1 style="font-size:4em;">Fund your independent film.</h1>
+					<p></p>
+					<p><a class="btn btn-success btn-lg" href="{{ URL::route('howto') }}" role="button">How it Works</a></p>
+				</div>
 			</div>
 		</div>
 	</div>
