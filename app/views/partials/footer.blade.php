@@ -1,7 +1,6 @@
 <!-- Footer -->
 <div class="row" id="footer-row">
 	<div class="container" id="footer-container">
-		<p> Footer information goes here. </p>
 	</div>
 </div>
 
