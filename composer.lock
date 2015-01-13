@@ -151,12 +151,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fzaninotto/Faker.git",
-                "reference": "9d9bd78a9c875e6cd8ab9555823017ef3182ece5"
+                "reference": "1dc843aaf1b6032a78082145cc2abe41f0ce0ec2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/9d9bd78a9c875e6cd8ab9555823017ef3182ece5",
-                "reference": "9d9bd78a9c875e6cd8ab9555823017ef3182ece5",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/1dc843aaf1b6032a78082145cc2abe41f0ce0ec2",
+                "reference": "1dc843aaf1b6032a78082145cc2abe41f0ce0ec2",
                 "shasum": ""
             },
             "require": {
@@ -195,7 +195,7 @@
                 "faker",
                 "fixtures"
             ],
-            "time": "2015-01-04 23:56:37"
+            "time": "2015-01-12 09:54:32"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -359,16 +359,16 @@
         },
         {
             "name": "jeremeamia/SuperClosure",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jeremeamia/super_closure.git",
-                "reference": "d05400085f7d4ae6f20ba30d36550836c0d061e8"
+                "reference": "4d89ca74994feab128ea46d5b3add92e6cb84554"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jeremeamia/super_closure/zipball/d05400085f7d4ae6f20ba30d36550836c0d061e8",
-                "reference": "d05400085f7d4ae6f20ba30d36550836c0d061e8",
+                "url": "https://api.github.com/repos/jeremeamia/super_closure/zipball/4d89ca74994feab128ea46d5b3add92e6cb84554",
+                "reference": "4d89ca74994feab128ea46d5b3add92e6cb84554",
                 "shasum": ""
             },
             "require": {
@@ -403,7 +403,7 @@
                 "serialize",
                 "tokenizer"
             ],
-            "time": "2013-10-09 04:20:00"
+            "time": "2015-01-10 01:09:28"
         },
         {
             "name": "laravel/framework",
@@ -685,16 +685,16 @@
         },
         {
             "name": "patchwork/utf8",
-            "version": "v1.1.27",
+            "version": "v1.1.28",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tchwork/utf8.git",
-                "reference": "f26cc98847add84cb27c5d77e2e0dff715944ac6"
+                "reference": "ffa082111aa3cb23cf2479a17e6785ace91da982"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tchwork/utf8/zipball/f26cc98847add84cb27c5d77e2e0dff715944ac6",
-                "reference": "f26cc98847add84cb27c5d77e2e0dff715944ac6",
+                "url": "https://api.github.com/repos/tchwork/utf8/zipball/ffa082111aa3cb23cf2479a17e6785ace91da982",
+                "reference": "ffa082111aa3cb23cf2479a17e6785ace91da982",
                 "shasum": ""
             },
             "require": {
@@ -732,7 +732,7 @@
                 "utf-8",
                 "utf8"
             ],
-            "time": "2015-01-11 12:41:11"
+            "time": "2015-01-12 08:05:15"
         },
         {
             "name": "phpseclib/phpseclib",
