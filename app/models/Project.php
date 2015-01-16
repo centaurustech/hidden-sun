@@ -1,7 +1,7 @@
 <?php
 
 class Project extends BaseModel {
-	
+
 	public function getGenreListAttribute() {
 		$genreList = '';
 		$genreNames = [];
@@ -46,6 +46,52 @@ class Project extends BaseModel {
 		return $fundingGoal;
 	}
 
+	public function getVideoUrlAttribute() {
+		$providedURL = $this->youtube_url_provided;
+		$parsedURL = parse_url($providedURL);
+
+		$sub11 = substr($providedURL, 0, 11);
+		$sub15 = substr($providedURL, 0, 15);
+		$sub23 = substr($providedURL, 0, 23);
+		$sub24 = substr($providedURL, 0, 24);
+
+		if($sub24 == "https://www.youtube.com/" xor $sub23 == "http://www.youtube.com/" xor $sub15 == "www.youtube.com" xor $sub11 == "youtube.com") {
+			$video_id = substr($parsedURL['query'], 2);
+			$videoURL = "//www.youtube.com/embed/" . $video_id;
+		} else {
+			$videoURL = false;
+		}
+
+		return $videoURL;
+	}
+
+	public function getThumbnailUrlAttribute() {
+		$providedURL = $this->youtube_url_provided;
+
+		if($this->youtube_url_provided == "none provided") {
+			$creator_email = $this->email;
+			$thumbnailURL = Gravatar::src($creator_email, 1024);
+		} else {
+
+			$parsedURL = parse_url($providedURL);
+
+			$sub11 = substr($providedURL, 0, 11);
+			$sub15 = substr($providedURL, 0, 15);
+			$sub23 = substr($providedURL, 0, 23);
+			$sub24 = substr($providedURL, 0, 24);
+
+			if($sub24 == "https://www.youtube.com/" xor $sub23 == "http://www.youtube.com/" xor $sub15 == "www.youtube.com" xor $sub11 == "youtube.com") {
+				$video_id = substr($parsedURL['query'], 2);
+			} else {
+				$video_id = "none";
+			}
+
+			$thumbnailURL =	"//img.youtube.com/vi/" . $video_id . "/0.jpg";
+		}
+
+		return $thumbnailURL;
+	}
+
 	// Add your validation rules here
 	public static $rules = [
 		'project_title'		=> 'required|max:100',
@@ -54,8 +100,7 @@ class Project extends BaseModel {
 		'funds_end_date'	=> 'required',
 		'funds_goal'		=> 'required',
 		'stage'				=> 'required',
-		'video_url'			=> '',
-		'thumbnail_url'		=> '',
+		'youtube_url_provided' => 'regex:/^((http(?:s)?\:\/\/))?(www\.)?youtube\.com\/watch\?v\=[a-zA-Z0-9\-]*/',
 		'status'			=> '',
 		'user_id'			=> 'required'
 		];
@@ -66,7 +111,7 @@ class Project extends BaseModel {
 		'synopsis'			=> 'required|max:2000',
 		'funds_goal'		=> 'required',
 		'stage'				=> 'required',
-		'video_url'			=> '',
+		'youtube_url_provided' => 'regex:/^((http(?:s)?\:\/\/))?(www\.)?youtube\.com\/watch\?v\=[a-zA-Z0-9\-]*/',
 		'user_id'			=> 'required'
 	];
 	
@@ -90,7 +135,7 @@ class Project extends BaseModel {
 	}
 
 	// Don't forget to fill this array
-	protected $fillable = [];
+	protected $fillable = ['project_title', 'synopsis', 'funds_goal', 'stage', 'video_url', 'user_id'];
 
 	public function scopeRandom($query, $size=1)
 	{

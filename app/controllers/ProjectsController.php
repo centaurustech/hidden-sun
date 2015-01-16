@@ -1,7 +1,5 @@
 <?php
 class ProjectsController extends \BaseController {
-
-
 	/**
 	 * Display a listing of projects
 	 *
@@ -75,9 +73,12 @@ class ProjectsController extends \BaseController {
 			$newProject->funds_start_date 	= $allInput['funds_start_date'];
 			$newProject->funds_end_date 	= $allInput['funds_end_date'];
 			$newProject->stage 				= $allInput['stage'];
-			$newProject->video_url  		= $allInput['video_url'];
-			$newProject->thumbnail_url		= $thumbnail_url;
+			$newProject->youtube_url_provided = $allInput['youtube_url_provided'];
 			$newProject->user_id 			= $allInput['user_id'];
+
+			if(!isset($allInput['youtube_url_provided'])){
+				$newProject->youtube_url_provided = "none provided";
+			}
 
 			$newProject->save();
 
@@ -135,7 +136,7 @@ class ProjectsController extends \BaseController {
 	{
 		$project = Project::findOrFail($id);
 
-		$validator = Validator::make($data = Input::all(), Project::$rules);
+		$validator = Validator::make($data = Input::all(), Project::$rules_for_update);
 
 		if ($validator->fails())
 		{
@@ -144,7 +145,7 @@ class ProjectsController extends \BaseController {
 
 		$project->update($data);
 
-		return Redirect::route('projects.index');
+		return Redirect::route('manage-projects');
 	}
 
 	public function updateStatus($id)

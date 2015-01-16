@@ -21,8 +21,7 @@ class CreateProjectsTable extends Migration {
 			$table->string('funds_end_date');
 			$table->decimal('funds_goal', 11, 2);
 			$table->enum('stage', array('pre-production', 'in-production', 'post-production'));
-			$table->string('video_url');
-			$table->string('thumbnail_url');
+			$table->array('youtube_url_provided');
 			$table->enum('status', array('active', 'inactive', 'pending activation', 'flagged', 'ended'))->default('pending activation');
 			$table->integer('user_id')->unsigned();
 			$table->foreign('user_id')->references('id')->on('users');

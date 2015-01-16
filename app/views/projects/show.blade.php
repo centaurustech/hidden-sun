@@ -36,7 +36,11 @@
 		<div class="col-md-12">
 			<div class="col-md-8">
 				<div class="embed-responsive embed-responsive-4by3">
-					<iframe class="embed-responsive-item" src="{{ $project->video_url }}"></iframe>
+					@if($project->video_url == false)
+						<img src="{{$project->thumbnail_url}}" height="400"/>
+					@else
+						<iframe class="embed-responsive-item" src="{{ $project->video_url }}"></iframe>
+					@endif
 				</div>
 			</div>
 			<div class="col-md-4">

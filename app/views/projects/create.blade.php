@@ -129,27 +129,34 @@
             <div class="col-xs-12">
                 <div class="col-md-12">
                     <h3>Enter Funding Goals</h3>
-                    <div class="form-group">
-                        <label class="control-label">Funding Goal</label>
-                        <input type="text" name="funds_goal" id="funds_goal">
-                            @if($errors->has('funds_goal'))
-                                {{ $errors->first('funds_goal') }}
-                            @endif
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label">Funding Start Date</label>
-                        <input type="text" name="funds_start_date" id="funds_start_date">
-                            @if($errors->has('funds_start_date'))
-                                {{ $errors->first('funds_start_date') }}
-                            @endif
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label">Funding End Date</label>
-                        <input type="text" name="funds_end_date" id="funds_end_date">
-                            @if($errors->has('funds_end_date'))
-                                {{ $errors->first('funds_end_date') }}
-                            @endif
-                    </div>
+                        <div class="form-group">
+                            <label for="funds_goal" class="col-sm-2 control-label">Funding Goal</label>
+                            <div class="col-sm-10">
+                                {{ Form::text('funds_goal', Input::old('funds_goal'), ['class' => 'form-control', 'placeholder' => '100000']) }}
+                                    @if($errors->has('funds_goal'))
+                                        {{ $errors->first('funds_goal') }}
+                                    @endif
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="funds_start_date" class="col-sm-2 control-label">Funding Start Date</label>
+                            <div class="col-sm-10">
+                                {{ Form::text('funds_start_date', Input::old('funds_start_date'), ['class' => 'form-control', 'id' => 'funds_start_date']) }}
+                                    @if($errors->has('funds_start_date'))
+                                        {{ $errors->first('funds_start_date') }}
+                                    @endif
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="funds_end_date" class="col-sm-2 control-label">Funding End Date</label>
+                            <div class="col-sm-10">
+                                {{ Form::text('funds_end_date', Input::old('funds_end_date'), ['class' => 'form-control', 'id' => 'funds_end_date']) }}
+                                    @if($errors->has('funds_end_date'))
+                                        {{ $errors->first('funds_end_date') }}
+                                    @endif
+                            </div>
+                        </div>
+           
                     <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
                 </div>
             </div>
@@ -169,14 +176,8 @@
                 </div>
             </div>
                 <div class="form-group">    
-                    <label for="video_url" class="col-sm-2 control-label">Video URL</label>
-                    {{ Form::text('video_url', Input::old('funds_goal')) }} 
-                </div>
-                <div class="form-group">
-                    <label for "thumbnail_url" class="col-sm-2 control-label">Cover Image URL</label>
-                    <div class="col-sm-2">
-                        {{ Form::text('thumbnail_url', Input::old('thumbnail_url')) }}
-                    </div>
+                    <label for="video_url" class="col-sm-2 control-label">YouTube URL</label>
+                    {{ Form::text('youtube_url_provided', Input::old('youtube_url_provided'), ['class' => 'form-control', 'id' => 'youtube_url_provided', 'placeholder' => 'http://www.youtube.com/watch?v=DK7CVqbtW0A']) }} 
                 </div>
             </div>
                     <button class="btn btn-success btn-lg pull-right" type="submit" value="create_project">Finish!</button>
