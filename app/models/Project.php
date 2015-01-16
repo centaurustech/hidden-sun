@@ -56,7 +56,8 @@ class Project extends BaseModel {
 		$sub24 = substr($providedURL, 0, 24);
 
 		if($sub24 == "https://www.youtube.com/" xor $sub23 == "http://www.youtube.com/" xor $sub15 == "www.youtube.com" xor $sub11 == "youtube.com") {
-			$video_id = substr($parsedURL['query'], 2);
+			
+			$video_id = (isset($parsedURL['query'])) ? substr($parsedURL['query'], 2);
 			$videoURL = "//www.youtube.com/embed/" . $video_id;
 		} else {
 			$videoURL = false;
@@ -81,7 +82,7 @@ class Project extends BaseModel {
 			$sub24 = substr($providedURL, 0, 24);
 
 			if($sub24 == "https://www.youtube.com/" xor $sub23 == "http://www.youtube.com/" xor $sub15 == "www.youtube.com" xor $sub11 == "youtube.com") {
-				$video_id = substr($parsedURL['query'], 2);
+				$video_id = (isset($parsedURL['query'])) ? substr($parsedURL['query'], 2);
 			} else {
 				$video_id = "none";
 			}
