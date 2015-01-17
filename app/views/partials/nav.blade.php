@@ -19,7 +19,6 @@
             <li><a style="color:#66BB6A;" href="{{ URL::route('projects-create') }}">Get Funded</a></li>
         </ul>  
     	   @if(Auth::check())
-           <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
             <ul class="nav navbar-nav navbar-right" style="margin-left:50px;margin-right:0px;margin-top: 5px;">
                 <li id="account-dropdown" class="dropdown">
                     <a id="drop1" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">

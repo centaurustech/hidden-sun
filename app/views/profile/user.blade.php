@@ -1,8 +1,6 @@
 @extends('layouts.master')
 @section('content')
 
-<link rel="stylesheet" type="text/css" href="/css/userprofile.css">
-
 <div class="container" style="margin-bottom:80px;">
 <div class="row">
 	<div class="[ col-sm-6 col-md-4 ]">

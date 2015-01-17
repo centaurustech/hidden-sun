@@ -15,5 +15,6 @@
 		</div>
 	</div>
 	@include('partials.footer')
+	<!-- Scripts -->
 </body>
 </html>
