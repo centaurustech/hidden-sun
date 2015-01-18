@@ -27,9 +27,14 @@ class Project extends BaseModel {
 
 	public function getDonationTotalAttribute() {
 		$donationsTotal = 0;
+		$pattern = "/^ch_[A-Za-z0-9]+/";
 
 		foreach ($this->donations as $donation) {
-			$donationsTotal += (integer)$donation->amount;
+			preg_match($pattern, $donation->stripe_charge_id, $charge_id_match, PREG_OFFSET_CAPTURE);;
+
+			if(!empty($charge_id_match) && $donation->stripe_charge_id == $charge_id_match[0][0]){
+				$donationsTotal += (integer)$donation->amount;
+			}
 		}
 		
 		$donationsTotal /= 100;

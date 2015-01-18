@@ -67,7 +67,7 @@ class DonationsController extends \BaseController {
 
 			$validator = Validator::make(Input::all(),
 				array(
-					'custom_amount' => 'required|numeric|max:25000',
+					'custom_amount' => 'required|numeric|min:1|max:25000',
 					'donation_amount' => 'required'
 				)
 			);
@@ -96,7 +96,7 @@ class DonationsController extends \BaseController {
 
 		if ($validator->fails())
 		{
-			return Redirect::back()->withErrors($validator)->withInput();
+			return "Your donation could not be validated.";
 		}
 
 		Donation::create($data);

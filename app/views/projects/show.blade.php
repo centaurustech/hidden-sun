@@ -23,9 +23,13 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="progress">
-				<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:{{ $project->funding_progress }}%;"></div>
+				@if ($project->funding_progress <= 100)
+					<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:{{ $project->funding_progress }}%;"></div>
+				@else
+					<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:100%;"></div>
+				@endif
 			</div>
-			<span style="float:left;"><b>Donation Total: </b>${{ $project->donation_total }}</span>
+			<span @if($project->funding_progress < 100) style="float:left;" @else style="float:left;color:green;" @endif><b>Donation Total: </b>${{ $project->donation_total }} @if($project->funding_progress > 100)This project has exceeded it's goal! Great job!@endif</span>
 			<span style="float:right;"><b>Goal: </b>${{ $project->funding_goal }}</span>
 		</div>
 	</div>
