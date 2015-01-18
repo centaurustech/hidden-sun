@@ -49,13 +49,7 @@ class Project extends BaseModel {
 	}
 
 	public function getFundingGoalAttribute() {
-		$number = $this->funds_goal;
-		$decimals = 0;
-		$dec_point = ".";
-		$thousands_sep = ",";
-
-		$fundingGoal = number_format($number, $decimals, $dec_point, $thousands_sep);
-
+		$fundingGoal = number_format($this->funds_goal, 0, ".", ",");
 		return $fundingGoal;
 	}
 
@@ -98,25 +92,25 @@ class Project extends BaseModel {
 
 	// Add your validation rules here
 	public static $rules = [
-		'project_title'		=> 'required|max:100',
-		'synopsis'			=> 'required|max:2000',
-		'funds_start_date'	=> 'required',
-		'funds_end_date'	=> 'required',
-		'funds_goal'		=> 'required',
-		'stage'				=> 'required',
-		'youtube_url_provided' => 'regex:/^((http(?:s)?\:\/\/))?(www\.)?youtube\.com\/watch\?v\=[a-zA-Z0-9\-]*/',
-		'status'			=> '',
-		'user_id'			=> 'required'
+		'project_title'			=> 'required|max:100',
+		'synopsis'				=> 'required|max:2000',
+		'funds_start_date'		=> 'required',
+		'funds_end_date'		=> 'required',
+		'funds_goal'			=> 'required',
+		'stage'					=> 'required',
+		'youtube_url_provided' 	=> 'regex:/^((http(?:s)?\:\/\/))?(www\.)?youtube\.com\/watch\?v\=[a-zA-Z0-9\-]*/',
+		'status'				=> '',
+		'user_id'				=> 'required'
 		];
 
 	//temporary rules for updating a project
 	public static $rules_for_update = [
-		'project_title'		=> 'required|max:100',
-		'synopsis'			=> 'required|max:2000',
-		'funds_goal'		=> 'required',
-		'stage'				=> 'required',
-		'youtube_url_provided' => 'regex:/^((http(?:s)?\:\/\/))?(www\.)?youtube\.com\/watch\?v\=[a-zA-Z0-9\-]*/',
-		'user_id'			=> 'required'
+		'project_title'			=> 'required|max:100',
+		'synopsis'				=> 'required|max:2000',
+		'funds_goal'			=> 'required',
+		'stage'					=> 'required',
+		'youtube_url_provided' 	=> 'regex:/^((http(?:s)?\:\/\/))?(www\.)?youtube\.com\/watch\?v\=[a-zA-Z0-9\-]*/',
+		'user_id'				=> 'required'
 	];
 	
 	// Database relationships

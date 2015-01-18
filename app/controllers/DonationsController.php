@@ -164,7 +164,5 @@ class DonationsController extends \BaseController {
 
 		return Redirect::route('donations.index');
 	}
-
-
-
+	
 }
