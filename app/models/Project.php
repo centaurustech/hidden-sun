@@ -5,13 +5,21 @@ class Project extends BaseModel {
 	public function getGenreListAttribute() {
 		$genreList = '';
 		$genreNames = [];
+		
 		foreach ($this->genres as $genre) {
 			if(sizeof($this->genres) <= 1) {
 				$genreList = $genre->genre;
 			} else {
-				// concat genre->name thing with ,
-					$genreList = $genreList . $genre->genre . ', ';
+				if(isset($genre->genre)){
+					$genreList = $genre->genre . ', ' . $genreList;
+				}
 			}
+		}
+
+		$len = strlen($genreList);
+		
+		if($genreList[$len - 2] == ','){
+			$genreList[$len - 2] = '';
 		}
 
 		return $genreList;
@@ -47,41 +55,31 @@ class Project extends BaseModel {
 	}
 
 	public function getVideoUrlAttribute() {
-		$providedURL = $this->youtube_url_provided;
-		$parsedURL = parse_url($providedURL);
 
-		$sub11 = substr($providedURL, 0, 11);
-		$sub15 = substr($providedURL, 0, 15);
-		$sub23 = substr($providedURL, 0, 23);
-		$sub24 = substr($providedURL, 0, 24);
+			$parsedURL = parse_url($this->youtube_url_provided);
+			$host = isset($parsedURL['host']) ? $parsedURL['host'] : false;
 
-		if($sub24 == "https://www.youtube.com/" xor $sub23 == "http://www.youtube.com/" xor $sub15 == "www.youtube.com" xor $sub11 == "youtube.com") {
-			
-			$video_id = (isset($parsedURL['query'])) ? substr($parsedURL['query'], 2) : false;
-			$videoURL = "//www.youtube.com/embed/" . $video_id;
-		} else {
-			$videoURL = false;
-		}
+			if($host == "www.youtube.com" xor $host == "youtube.com") {
+				$video_id = (isset($parsedURL['query'])) ? substr($parsedURL['query'], 2) : false;
+				$videoURL = "//www.youtube.com/embed/" . $video_id;
+			} else {
+				$videoURL = false;
+			}
 
 		return $videoURL;
 	}
 
 	public function getThumbnailUrlAttribute() {
-		$providedURL = $this->youtube_url_provided;
+		$providedURL = trim($this->youtube_url_provided);
 
-		if($this->youtube_url_provided == "none provided") {
+		if($providedURL == "none provided" || empty($providedURL)) {
 			$creator_email = $this->email;
 			$thumbnailURL = Gravatar::src($creator_email, 1024);
 		} else {
-
 			$parsedURL = parse_url($providedURL);
+			$host = isset($parsedURL['host']) ? $parsedURL['host'] : false;
 
-			$sub11 = substr($providedURL, 0, 11);
-			$sub15 = substr($providedURL, 0, 15);
-			$sub23 = substr($providedURL, 0, 23);
-			$sub24 = substr($providedURL, 0, 24);
-
-			if($sub24 == "https://www.youtube.com/" xor $sub23 == "http://www.youtube.com/" xor $sub15 == "www.youtube.com" xor $sub11 == "youtube.com") {
+			if($host == "www.youtube.com" xor $host == "youtube.com") {
 				$video_id = (isset($parsedURL['query'])) ? substr($parsedURL['query'], 2) : "none";
 			} else {
 				$video_id = "none";

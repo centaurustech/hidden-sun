@@ -39,7 +39,7 @@
 				            <div class="caption">
 				              <h2>{{ $project->project_title }}</h2>
 				              <p>{{ $project->synopsis }}</p>
-				              <p><i class="icon icon-map-marker"></i>{{ $project->genre_list }}</p>
+				              <p>{{ $project->genre_list }}</p>
 				              <a href="{{ URL::route('project-show', $project->id) }}">
 				              	<button type="button" class="btn btn-info">
 				              		View Project
