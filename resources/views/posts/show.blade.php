@@ -1,1 +1,0 @@
-/vagrant/sites/capstone.dev/resources/views/posts/show.blade.php

@@ -21,10 +21,6 @@ class ProjectsController extends \BaseController {
 		}
 
 		foreach ($projects as $project){
-			$funding_goal = (integer) $project->funds_goal;
-			$funding_progress = round(($project->donation_total / $funding_goal) * 100);
-			$project['funding_progress'] = $funding_progress;
-			
 			$funding_ends = new Carbon($project->funds_end_date);
 			$now = Carbon::now();
 			$days_left = ($now->diff($funding_ends)->days < 1) ? 'today' : $funding_ends->diffInDays($now);
