@@ -204,7 +204,6 @@ class AccountController extends BaseController {
 		return Redirect::route('home')->with(array('global' => 'Could not recover your account', 'alert-type' => 'danger'));
 	}
 
-	// Method to update personal account information
 	public function updatePersonalInformation($id){
 		$user_to_update = User::findOrFail($id);
 
